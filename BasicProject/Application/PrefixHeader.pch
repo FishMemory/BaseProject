@@ -1,0 +1,20 @@
+//
+//  PrefixHeader.pch
+//   
+//
+//  Created by   on 16/2/24.
+//  Copyright © 2016年  . All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// 解决不能识别NSString的bug：http://stackoverflow.com/questions/19723392/adding-c-file-causes-pch-error
+#ifdef __OBJC__
+#import "Constant.h"
+#import "APIHeader.h"
+#import "VendorHeader.h"
+#import "APPHeader.h"
+#endif
+
+#endif /* PrefixHeader_pch */
