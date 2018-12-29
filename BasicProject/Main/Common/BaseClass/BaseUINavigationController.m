@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseUINavigationController.h"
-
+@interface BaseUINavigationController()<UIGestureRecognizerDelegate>
+@end
 
 @implementation BaseUINavigationController
 
@@ -42,5 +43,18 @@
         [viewController setHidesBottomBarWhenPushed:YES]; 
     }
   [super pushViewController:viewController animated:animated];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.interactivePopGestureRecognizer.delegate =  self;
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if (self.viewControllers.count <= 1 ) {
+        return NO;
+    }
+    return YES;
 }
 @end

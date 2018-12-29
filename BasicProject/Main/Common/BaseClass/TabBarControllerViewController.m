@@ -48,7 +48,7 @@ static NSString *kGroupName = @"GroupName";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [[UITabBar appearance] setTranslucent:NO];
     self.delegate = self;
     UIImage * navBackImage = [UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(SCREEN_WIDTH, UNABLE_SPACE_HEIGHT)];
     ImageArrays = @[@"chat",@"find",@"home",@"friends",@"user"];
