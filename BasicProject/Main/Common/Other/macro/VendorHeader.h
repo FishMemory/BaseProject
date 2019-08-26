@@ -28,7 +28,6 @@
 #import "NSString+SizeLayout.h"
 #import "NSArray+safeEX.h"
 #import "NSDictionary+safeEX.h"
-#import "AKASegmentedControl.h"
 #import "NSString+syCategory.h"
 #import "IQKeyboardManager.h"
 #import "CheckNumber.h"
