@@ -1494,11 +1494,11 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/LVLBS/Vendor/Parse",
+					"$(PROJECT_DIR)/BasicProject/Vendor/Parse",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BasicProject/Application/PrefixHeader.pch";
-				INFOPLIST_FILE = LVLBS/Application/Info.plist;
+				INFOPLIST_FILE = BasicProject/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1527,11 +1527,11 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/LVLBS/Vendor/Parse",
+					"$(PROJECT_DIR)/BasicProject/Vendor/Parse",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BasicProject/Application/PrefixHeader.pch";
-				INFOPLIST_FILE = LVLBS/Application/Info.plist;
+				INFOPLIST_FILE = BasicProject/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
