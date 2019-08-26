@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -110,7 +110,6 @@
 		EC065837219A7AC600636786 /* JFTagListView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657DB219A7AC600636786 /* JFTagListView.m */; };
 		EC065838219A7AC600636786 /* btn_removeTag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC0657DD219A7AC600636786 /* btn_removeTag@2x.png */; };
 		EC065839219A7AC600636786 /* HYPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657DF219A7AC600636786 /* HYPageView.m */; };
-		EC06583A219A7AC600636786 /* AKASegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657E3219A7AC600636786 /* AKASegmentedControl.m */; };
 		EC06583B219A7AC600636786 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657E5219A7AC600636786 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EC06583C219A7AC600636786 /* HSSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657E8219A7AC600636786 /* HSSessionModel.m */; };
 		EC06583D219A7AC600636786 /* HSDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657EB219A7AC600636786 /* HSDownloadManager.m */; };
@@ -349,8 +348,6 @@
 		EC0657DD219A7AC600636786 /* btn_removeTag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_removeTag@2x.png"; sourceTree = "<group>"; };
 		EC0657DF219A7AC600636786 /* HYPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPageView.m; sourceTree = "<group>"; };
 		EC0657E0219A7AC600636786 /* HYPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPageView.h; sourceTree = "<group>"; };
-		EC0657E2219A7AC600636786 /* AKASegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKASegmentedControl.h; sourceTree = "<group>"; };
-		EC0657E3219A7AC600636786 /* AKASegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKASegmentedControl.m; sourceTree = "<group>"; };
 		EC0657E5219A7AC600636786 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		EC0657E6219A7AC600636786 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		EC0657E8219A7AC600636786 /* HSSessionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSSessionModel.m; sourceTree = "<group>"; };
@@ -694,7 +691,6 @@
 		EC06572E219A780200636786 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				EC0657E1219A7AC600636786 /* AKSegmentedControl */,
 				EC06575F219A7AC500636786 /* FTPopOverMenu */,
 				EC065763219A7AC500636786 /* GlobalUtil */,
 				EC0657E7219A7AC600636786 /* HSDownloadManager */,
@@ -986,15 +982,6 @@
 			path = HYPageView;
 			sourceTree = "<group>";
 		};
-		EC0657E1219A7AC600636786 /* AKSegmentedControl */ = {
-			isa = PBXGroup;
-			children = (
-				EC0657E2219A7AC600636786 /* AKASegmentedControl.h */,
-				EC0657E3219A7AC600636786 /* AKASegmentedControl.m */,
-			);
-			path = AKSegmentedControl;
-			sourceTree = "<group>";
-		};
 		EC0657E4219A7AC600636786 /* JSONKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1007,10 +994,10 @@
 		EC0657E7219A7AC600636786 /* HSDownloadManager */ = {
 			isa = PBXGroup;
 			children = (
-				EC0657E8219A7AC600636786 /* HSSessionModel.m */,
 				EC0657E9219A7AC600636786 /* HSDownloadManager.h */,
-				EC0657EA219A7AC600636786 /* HSSessionModel.h */,
 				EC0657EB219A7AC600636786 /* HSDownloadManager.m */,
+				EC0657EA219A7AC600636786 /* HSSessionModel.h */,
+				EC0657E8219A7AC600636786 /* HSSessionModel.m */,
 			);
 			path = HSDownloadManager;
 			sourceTree = "<group>";
@@ -1120,7 +1107,6 @@
 				EC065664219A6FFF00636786 /* Frameworks */,
 				EC065665219A6FFF00636786 /* Resources */,
 				D11D6AEB89A4B2B645A5BF31 /* [CP] Embed Pods Frameworks */,
-				B0CB7838BEADA55FB0BE1AD7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1196,51 +1182,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B0CB7838BEADA55FB0BE1AD7 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LVLBS/Pods-LVLBS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D11D6AEB89A4B2B645A5BF31 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-LVLBS/Pods-LVLBS-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
-				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
-				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/ZipArchive/ZipArchive.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LVLBS/Pods-LVLBS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZipArchive.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LVLBS/Pods-LVLBS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LVLBS/Pods-LVLBS-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LVLBS/Pods-LVLBS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1327,7 +1283,6 @@
 				EC06570C219A779500636786 /* UriParser.m in Sources */,
 				EC0657F0219A7AC600636786 /* NSTimer+addition.m in Sources */,
 				EC065713219A779500636786 /* GetDeviceInformation.m in Sources */,
-				EC06583A219A7AC600636786 /* AKASegmentedControl.m in Sources */,
 				EC0657F1219A7AC600636786 /* WYWebProgressLayer.m in Sources */,
 				EC065709219A779500636786 /* BaseUINavigationController.m in Sources */,
 				EC065822219A7AC600636786 /* UIButton+Delay.m in Sources */,
