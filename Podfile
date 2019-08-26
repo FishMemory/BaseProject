@@ -6,7 +6,7 @@ target 'BasicProject' do
 	pod 'Reachability', '~> 3.2'
 	pod 'AFNetworking', '~> 3.0.4'
 	pod 'IQKeyboardManager'
-
+pod 'Masonry'
         pod 'MBProgressHUD'
         pod 'MJExtension'
 	pod 'MJRefresh'
