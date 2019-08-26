@@ -52,8 +52,8 @@ CFSTR(""), kCFStringEncodingUTF8));
     if (!(self.length > 0)) {
         return @"";
     }
-    NSString *timeInterval = [self dateStrToIntervalForMatterType:fromTimeType];
-    NSString *updateTime = [timeInterval timeIntervalForMatterToDateformatType:formatType];
+    NSString *timeInterval = [self dateStrToIntervalForMatterType:formatType];
+    NSString *updateTime = [timeInterval timeIntervalForMatterToDateformatType:fromTimeType];
     return updateTime;
 }
 
@@ -67,15 +67,15 @@ CFSTR(""), kCFStringEncodingUTF8));
 -(NSString *)dateStrToIntervalForMatterType:(NSString *)type{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:type];
+    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
     NSDate* dates = [formatter dateFromString:self]; //------------将字符串按formatter转成nsdate
     
     //    NSDate *datenow = [NSDate date];//现在时间,你可以输出来看下是什么格式
     //    NSString *nowtimeStr = [formatter stringFromDate:datenow];//----------将nsdate按formatter格式转成nsstring
     //    时间转时间戳的方法:
     NSString *timeSp = [NSString stringWithFormat:@"%lu", (long)[dates timeIntervalSince1970]];
-    
-    return timeSp;
     NSLog(@"timeSp:%@",timeSp);
+    return timeSp;
 }
 
 
@@ -111,7 +111,7 @@ CFSTR(""), kCFStringEncodingUTF8));
     //获取当前时间
     NSDate *now = [NSDate date];
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSUInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSUInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond | NSCalendarUnitWeekday;
     NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:now];
     if ([time isEqualToString:@"day"]) {
          NSInteger day = [dateComponent day];
@@ -384,53 +384,49 @@ CFSTR(""), kCFStringEncodingUTF8));
                                                               kCFStringEncodingUTF8));
     return encodedString;
 }
+
 /**
- *  设置两种不同的字体大下，颜色 根据输入的rang
- *
- *  @param editString            改变的文字
- *  @param leadRang              前部分
- *  @param laedPartColor         laedPartColor 前部分颜色
- *  @param leadPartFontsize      leadPartFontsize 前部分字号
- *  @param traillingPartColor    traillingPartColor 后面的颜色
- *  @param traillingPartFontsize traillingPartFontsize 后面的字体大小
- *
- *  @return return value 返回可变字符串
+ 设置两种不同的字体大下，颜色 根据输入的rang
+ @param leadRang 前部分
+ @param laedColor 前部分颜色
+ @param leadFontsize 前部分字号
+ @param trailColor 后面的颜色
+ @param trailFontsize 后面的字体大小
+ @return 返回可变字符串
  */
--(NSMutableAttributedString *)setDifferentFontSizeAndFontColorInlineWithleadpartRang:(NSRange)leadRang  laedColor:(UIColor *)laedPartColor leadFontsize:(CGFloat)leadPartFontsize trailColor:(UIColor *)traillingPartColor ltrailFontsize:(CGFloat)traillingPartFontsize  {
+-(NSMutableAttributedString *)setDiffFontAndColorWithRang:(NSRange)leadRang  laedColor:(UIColor *)laedColor leadFontsize:(CGFloat)leadFontsize trailColor:(UIColor *)trailColor trailFontsize:(CGFloat)trailFontsize  {
     NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:self];
     if (!(self.length >0)) {
         return AttributedStr;
     }
     // 设置 前面字体颜色
-    [AttributedStr addAttribute:NSForegroundColorAttributeName  value:laedPartColor  range:leadRang];
+    [AttributedStr addAttribute:NSForegroundColorAttributeName  value:laedColor  range:leadRang];
     // 设置 后面字体颜色
-    [AttributedStr addAttribute:NSForegroundColorAttributeName value:traillingPartColor  range:NSMakeRange(leadRang.length, AttributedStr.length- leadRang.length)];
+    [AttributedStr addAttribute:NSForegroundColorAttributeName value:trailColor  range:NSMakeRange(leadRang.length, AttributedStr.length- leadRang.length)];
     // 设置 前面字体大小
-    [AttributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:leadPartFontsize] range:leadRang];
+    [AttributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:leadFontsize] range:leadRang];
     // 设置 后面字体大小
-    [AttributedStr addAttribute:NSFontAttributeName  value:[UIFont systemFontOfSize:traillingPartFontsize] range:NSMakeRange(leadRang.length, AttributedStr.length-leadRang.length)];
+    [AttributedStr addAttribute:NSFontAttributeName  value:[UIFont systemFontOfSize:trailFontsize] range:NSMakeRange(leadRang.length, AttributedStr.length-leadRang.length)];
     
     return AttributedStr;
 }
+
 /**
- *  设置两种不同的字体大小
- *
- *  @param editString            要改变的文字
- *  @param leadRang              前部分的rang
- *  @param leadPartFontsize      leadPartFontsize 前部分的字体大小
- *  @param traillingPartFontsize traillingPartFontsize 后部分的字体大小
- *
- *  @return 可变字符串
+ 设置两种不同的字体大小
+ @param leadRang 前部分的rang
+ @param leadsize 前部分的字体大小
+ @param trailsize 后部分的字体大小
+ @return  可变字符串
  */
--(NSMutableAttributedString *)setDifferentFontSizeInlineWithleadpartRang:(NSRange)leadRang  leadFontsize:(CGFloat)leadPartFontsize  ltraillingFontsize:(CGFloat)traillingPartFontsize  {
+-(NSMutableAttributedString *)setDiffFontWithRang:(NSRange)leadRang  leadFontsize:(CGFloat)leadsize  ltrailFontsize:(CGFloat)trailsize  {
     NSString *string = self.length>0?self:@"";
     
     NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:string];
     
     // 设置 前面字体大小
-    [AttributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:leadPartFontsize] range:leadRang];
+    [AttributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:leadsize] range:leadRang];
     // 设置 后面字体大小
-    [AttributedStr addAttribute:NSFontAttributeName  value:[UIFont systemFontOfSize:traillingPartFontsize] range:NSMakeRange(leadRang.length, AttributedStr.length-leadRang.length)];
+    [AttributedStr addAttribute:NSFontAttributeName  value:[UIFont systemFontOfSize:trailsize] range:NSMakeRange(leadRang.length, AttributedStr.length-leadRang.length)];
     
     return AttributedStr;
 }
@@ -444,16 +440,16 @@ CFSTR(""), kCFStringEncodingUTF8));
  *
  *  @return 返回可变字符串
  */
--(NSMutableAttributedString *)setDifferentFontColorInlineWithleadpartRang:(NSRange)leadRang  laedPartColor:(UIColor *)laedPartColor  traillingPartColor:(UIColor *)traillingPartColor {
+-(NSMutableAttributedString *)setDiffFontColorWithleadRang:(NSRange)leadRang  laedColor:(UIColor *)lColor  trailColor:(UIColor *)tColor {
     
     NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:self];
     if (AttributedStr == nil || !(AttributedStr.length > 0) ) {
         return AttributedStr;
     }
     // 设置 前面字体颜色
-    [AttributedStr addAttribute:NSForegroundColorAttributeName  value:laedPartColor  range:leadRang];
+    [AttributedStr addAttribute:NSForegroundColorAttributeName  value:lColor  range:leadRang];
     // 设置 后面字体颜色
-    [AttributedStr addAttribute:NSForegroundColorAttributeName value:traillingPartColor  range:NSMakeRange(leadRang.length, AttributedStr.length- leadRang.length)];
+    [AttributedStr addAttribute:NSForegroundColorAttributeName value:tColor  range:NSMakeRange(leadRang.length, AttributedStr.length - leadRang.length)];
     
     return AttributedStr;
 }
@@ -716,4 +712,39 @@ CFSTR(""), kCFStringEncodingUTF8));
     
     return AttributedStr;
 }
+// 时间转成 02：01：12
++(NSString*)durationChangeStrWithtimeInterval:(NSInteger)duration{
+    NSInteger second = 0;
+    NSInteger minutes = 0;
+    NSInteger hours = 0;
+    hours = duration / 3600;
+    second = duration % 60;
+    minutes = (duration % 3600) / 60;
+  
+    NSString *secondStr =  @":00";
+    secondStr = second > 9 ? [NSString stringWithFormat:@":%@",@(second)] : [NSString stringWithFormat:@":0%@",@(second)];
+    NSString *minutesStr = @"00";
+    minutesStr = minutes > 9 ? [NSString stringWithFormat:@"%@",@(minutes)] : [NSString stringWithFormat:@"0%@",@(minutes)];
+    NSString *hoursStr = hours > 0 ? [NSString stringWithFormat:@"%@:",@(hours)] : @"";
+    NSString *title = [NSString stringWithFormat:@"%@%@%@",hoursStr,minutesStr,secondStr];
+    return title;
+}
+
+- (NSString*)urlencode{
+    NSMutableString *output = [NSMutableString string];
+    const unsigned char *source = (const unsigned char *)[self UTF8String];
+    int sourceLen = strlen((const char*)source);
+    for(int i =0; i < sourceLen; ++i) {
+        const unsigned char thisChar = source[i];
+        if(thisChar ==' '){
+            [output appendString:@"+"];
+        }else if(thisChar =='.'|| thisChar =='-'|| thisChar =='_'|| thisChar =='~'|| (thisChar >='a'&& thisChar <='z') ||(thisChar >='A'&& thisChar <='Z') || (thisChar >='0'&& thisChar <='9')) {
+            [output appendFormat:@"%c", thisChar];
+        }else{
+            [output appendFormat:@"%%%02X", thisChar];
+        }
+    }
+    return output;
+}
+
 @end

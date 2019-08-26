@@ -30,7 +30,7 @@
             });
         } else {
             int seconds = timeOut % 60;
-            NSString *timeStr = [NSString stringWithFormat:@"%0.2d", seconds];
+            NSString *timeStr = [NSString stringWithFormat:@"%@", @(seconds)];
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.backgroundColor = color;
                 [self setTitle:[NSString stringWithFormat:@"%@%@",timeStr,subTitle] forState:UIControlStateNormal];
@@ -62,10 +62,10 @@
             });
         } else {
             int seconds = timeOut % 60;
-            NSString *timeStr = [NSString stringWithFormat:@"%0.2d", seconds];
+            NSString *timeStr = [NSString stringWithFormat:@"%@", @(seconds)];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self setTitleColor:color forState:UIControlStateNormal];
-                [self setTitle:[NSString stringWithFormat:@"%@(%@%@)",title,timeStr,subTitle] forState:UIControlStateNormal];
+                [self setTitle:[NSString stringWithFormat:@"%@%@",timeStr,subTitle] forState:UIControlStateNormal];
                 self.userInteractionEnabled = NO;
             });
             timeOut--;

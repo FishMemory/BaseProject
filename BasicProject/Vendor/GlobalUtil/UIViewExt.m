@@ -277,9 +277,33 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center)
     }else{
         self.layer.cornerRadius = radius;
     }
-  
 }
-//  Zhangshuai add
+/// 性能优化切圆角 size(8,8) 圆角为8
+-(void)setViewFilletSize:(CGSize)size{
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:size];
+    
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc]init];
+    //设置大小
+    maskLayer.frame = self.bounds;
+    //设置图形样子
+    maskLayer.path = maskPath.CGPath;
+    self.layer.mask = maskLayer;
+}
+
+-(void)setViewFilletRadius:(CGFloat)radius color:(UIColor*)color{
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(radius, radius)];
+    
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc]init];
+    [maskLayer setLineWidth:1];
+//    [maskLayer setFillColor:color.CGColor];
+    [maskLayer setStrokeColor:color.CGColor];
+    //设置大小
+    maskLayer.frame = self.bounds;
+    //设置图形样子
+    maskLayer.path = maskPath.CGPath;
+    self.layer.mask = maskLayer;
+}
+
 - (void)setViewWithRadius:(CGFloat)radius BorderColor:(UIColor *)color BorderWidth:(CGFloat)borderwidth{
     self.layer.masksToBounds = YES;
     self.layer.cornerRadius = radius;
@@ -287,7 +311,7 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center)
     self.layer.borderColor = [color CGColor];
     self.layer.borderWidth = borderwidth;
 }
-//  Zhangshuai end
+
 
 - (void)arrangeButtonItemsWithDataSource:(NSArray *)dataArray OriginalButtonX:(CGFloat)orignalX OriginalButtonY:(CGFloat)origanalY{
    self.originalx = orignalX;
@@ -314,6 +338,26 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center)
     }
 
 }
+
+-(void)setViewLayerThemeColors:(CGSize)size {
+    CAGradientLayer *layer = [CAGradientLayer layer];
+    layer.frame = CGRectMake(0, 0, size.width, size.height);
+    layer.startPoint = CGPointMake(0, 0);
+    layer.endPoint = CGPointMake(1, 0);
+    layer.colors = @[(__bridge id)COL_CHANG_START.CGColor,(__bridge id)COL_CHANG_END.CGColor];
+    [self.layer addSublayer:layer];
+}
+
+-(void)createViewShadDow:(UIColor *)color{
+    //阴影的颜色
+    self.layer.shadowColor = [color CGColor];
+    self.layer.shadowOffset = CGSizeMake(0, 3);
+    //阴影透明度
+    self.layer.shadowOpacity = 0.3;
+    //阴影圆角度数
+    self.layer.shadowRadius = 7;
+}
+
 //
 //- (CGFloat)getAllButtonItemsWithDatasource:(NSArray *)dataArray OriginalButtonX:(CGFloat)originalX OrignalButtonY:(CGFloat)originalY{
 //    originalX = originalx;

@@ -2,7 +2,7 @@
 //  IAPService.h
 //  WenXiaoYou
 //
-//  Created by 唐攀 on 2017/4/13.
+//  Created by 宋亚清 on 2017/4/13.
 //  Copyright © 2017年 lantuiOS. All rights reserved.
 //
 

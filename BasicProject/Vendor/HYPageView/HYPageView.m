@@ -112,7 +112,7 @@
             y = -20;
         }
         if (_viewController.navigationController && !_viewController.navigationController.navigationBar.hidden && !_viewController.navigationController.navigationBarHidden && !_isAdapteNavigationBar) {
-            y = -UNABLE_SPACE_HEIGHT;
+            y = -kTopSafeHeight;
         }
         CGRect frame = CGRectMake(0, y, _selfFrame.size.width, TAB_HEIGHT + _topSpace);
         _topTabView  = [[UIView alloc] initWithFrame:frame];
@@ -246,7 +246,7 @@
         
         CGFloat y = 0;
         if (_viewController.navigationController && !_viewController.navigationController.navigationBar.hidden && !_viewController.navigationController.navigationBarHidden) {
-            y = -UNABLE_SPACE_HEIGHT;
+            y = -kTopSafeHeight;
         }else if (_viewController.navigationController && (_viewController.navigationController.navigationBar.hidden || _viewController.navigationController.navigationBarHidden)){
             y = -20;
         }
@@ -420,7 +420,7 @@
                 
                 CGFloat offset = _topSpace + TAB_HEIGHT;
                 if (_viewController.navigationController && !_viewController.navigationController.navigationBar.hidden && !_viewController.navigationController.navigationBarHidden && _isAdapteNavigationBar) {
-                    offset += UNABLE_SPACE_HEIGHT;
+                    offset += kTopSafeHeight;
                 }
                 CGRect frame = CGRectMake(_selfFrame.size.width * i, offset, _selfFrame.size.width, _scrollView.bounds.size.height - offset);
                 

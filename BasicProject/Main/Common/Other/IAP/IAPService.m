@@ -2,7 +2,7 @@
 //  IAPService.m
 //  WenXiaoYou
 //
-//  Created by 唐攀 on 2017/4/13.
+//  Created by 宋亚清 on 2017/4/13.
 //  Copyright © 2017年 lantuiOS. All rights reserved.
 //
 
@@ -40,30 +40,30 @@
         [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
     }
     
-//    [HttpServices get:iap_products _id:nil showBackProgressHD:YES token:APP.token showError:YES success:^(id jsonObj, Pagination *page) {
-//        NSArray  *dataList = [jsonObj objectForKeyCheck:@"data"];
-//        SAVE_TO_USER_DEFAULT(dataList, IAP_PRODUCTS_KEY);
-//        for (NSDictionary *dic  in dataList) {
-//            NSString *pid  = [dic objectForKeyCheck:@"pid"];
-//            [prodArray addObject:pid];
-//        }
-//        NSSet *productIDs = [NSSet setWithArray:prodArray];
-//        SKProductsRequest *request= [[SKProductsRequest alloc] initWithProductIdentifiers:productIDs];
-//        request.delegate = self;
-//        [request start];
-//
-//        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-//        NSString *base64String = GET_OBJ_FROM_USER_DEFAULT(PURCHASING);
-//        if (base64String) {
-//            [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
-//        }
-//
-//    } apiErroBlock:^(id jsonObj) {
-//
-//    } networkErroBlock:^(NSURLSessionDataTask *operation, NSError *error) {
-//
-//    }];
-//
+    //    [HttpServices get:iap_products _id:nil showBackProgressHD:YES token:APP.token showError:YES success:^(id jsonObj, Pagination *page) {
+    //        NSArray  *dataList = [jsonObj objectForKeyCheck:@"data"];
+    //        SAVE_TO_USER_DEFAULT(dataList, IAP_PRODUCTS_KEY);
+    //        for (NSDictionary *dic  in dataList) {
+    //            NSString *pid  = [dic objectForKeyCheck:@"pid"];
+    //            [prodArray addObject:pid];
+    //        }
+    //        NSSet *productIDs = [NSSet setWithArray:prodArray];
+    //        SKProductsRequest *request= [[SKProductsRequest alloc] initWithProductIdentifiers:productIDs];
+    //        request.delegate = self;
+    //        [request start];
+    //
+    //        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    //        NSString *base64String = GET_OBJ_FROM_USER_DEFAULT(PURCHASING);
+    //        if (base64String) {
+    //            [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+    //        }
+    //
+    //    } apiErroBlock:^(id jsonObj) {
+    //
+    //    } networkErroBlock:^(NSURLSessionDataTask *operation, NSError *error) {
+    //
+    //    }];
+    //
     // ---------- IAP ---------
 }
 
@@ -138,17 +138,17 @@
                 NSDictionary *dic = @{@"xtag":self.orderId,  @"ytag":base64String};
                 NSLog(@">>> %@", dic);
                 // 上传票据
-                [HttpServices post:@"" _id:nil showBackProgressHD:YES token:APP.token showError:YES dataDic:dic success:^(id jsonObj, Pagination *page) {
-                    // 删除票据和订单
-                    REMOVE_USER_DEFAULT(PURCHASING);
-                    REMOVE_USER_DEFAULT(PURCHASING_ORDER_ID);
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFACTION_IAP_KEY object:nil];
-                    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-                } apiErroBlock:^(id jsonObj) {
-                    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-                } networkErroBlock:^(NSURLSessionDataTask *operation, NSError *error) {
-                    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-                }];
+                [HttpServices post:nil showBackProgressHD:YES showError:YES dataDic:nil
+                           success:^(id jsonObj) {
+                               // 删除票据和订单
+                               REMOVE_USER_DEFAULT(PURCHASING);
+                               REMOVE_USER_DEFAULT(PURCHASING_ORDER_ID);
+                               [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFACTION_IAP_KEY object:nil];
+                               [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+                               
+                           } networkErroBlock:^(NSURLSessionDataTask *operation, NSError *error) {
+                               [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+                           }];
                 break;
             }
             case SKPaymentTransactionStateRestored:

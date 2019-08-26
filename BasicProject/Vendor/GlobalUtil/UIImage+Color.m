@@ -239,6 +239,34 @@
     return image;
 }
 
++(UIImage*)ImageWithColorsSize:(CGSize)size {
+    CGRect frame = CGRectMake(0, 0, size.width, size.height);
+    
+    UIGraphicsBeginImageContext(frame.size);
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGColorSpaceRef rgb = CGColorSpaceCreateDeviceRGB();
+    
+    CGContextScaleCTM(context, frame.size.width, frame.size.height);
+//    NSArray *array = @[0.0/255.0, 147.0/255.0, 205.0/255.0, 1.0,0.0/255.0, 196.0/255.0, 122.0/255.0, 1.0];
+    CGFloat colors[] = {
+        0.0/255.0, 147.0/255.0, 205.0/255.0, 1.0,
+        
+        0.0/255.0, 196.0/255.0, 122.0/255.0, 1.0,
+    };
+    
+    CGGradientRef backGradient = CGGradientCreateWithColorComponents(rgb, colors, NULL, sizeof(colors)/(sizeof(colors[0])*4));
+    
+    CGColorSpaceRelease(rgb);
+    
+    //设置颜色渐变的方向，范围在(0,0)与(1.0,1.0)之间，如(0,0)(1.0,0)代表水平方向渐变,(0,0)(0,1.0)代表竖直方向渐变
+    CGContextDrawLinearGradient(context, backGradient, CGPointMake(0, 0), CGPointMake(1.0, 0), kCGGradientDrawsBeforeStartLocation);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
 #pragma mark - 图片圆形
 +(UIImage*) circleImage:(UIImage*) image withParam:(CGFloat) inset {
     UIGraphicsBeginImageContext(image.size);
@@ -551,7 +579,7 @@
     
     UIImage *image = [UIImage imageNamed:imageName];
     
-    return [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    return [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]; 
 }
 
 /*
@@ -600,4 +628,94 @@
     UIImage *destImg = UIGraphicsGetImageFromCurrentImageContext();
     return destImg;
 }
+
+#pragma mark - 图片压缩返回base64
++(NSString *)ZipNSDataWithImage:(UIImage *)sourceImage
+{
+    //进行图像尺寸的压缩
+    CGSize imageSize = sourceImage.size;//取出要压缩的image尺寸
+    CGFloat width = imageSize.width;    //图片宽度
+    CGFloat height = imageSize.height;  //图片高度
+    //1.宽高大于1280(宽高比不按照2来算，按照1来算)
+    if (width>1280) {
+        if (width>height) {
+            CGFloat scale = width/height;
+            height = 1280;
+            width = height*scale;
+        }else{
+            CGFloat scale = height/width;
+            width = 1280;
+            height = width*scale;
+        }
+        //2.高度大于1280
+    }else if(height>1280){
+        CGFloat scale = height/width;
+        width = 1280;
+        height = width*scale;
+    }else{
+    }
+    UIGraphicsBeginImageContext(CGSizeMake(width, height));
+    [sourceImage drawInRect:CGRectMake(0,0,width,height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    //进行图像的画面质量压缩
+    NSData *data = UIImageJPEGRepresentation(newImage, 1.0);
+    if (data.length>100*1024) {
+        if (data.length>1024*1024) {//1M以及以上
+            data=UIImageJPEGRepresentation(newImage, 0.7);
+        }else if (data.length>512*1024) {//0.5M-1M
+            data=UIImageJPEGRepresentation(newImage, 0.8);
+        }else if (data.length>200*1024) {
+            //0.25M-0.5M
+            data=UIImageJPEGRepresentation(newImage, 0.9);
+        }
+    }
+    NSString *baseStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    return baseStr;
+}
+
++(void)showImage:(UIImageView*)avatarImageView
+{
+    if (!(avatarImageView.image.size.width > 0)) {
+        return;
+    }
+    UIImage *image = avatarImageView.image;
+    // 获得根窗口
+    UIWindow *window =[UIApplication sharedApplication].keyWindow;
+    UIView *backgroundView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH  , SCREEN_HEIGHT)];
+    CGRect oldframe =[avatarImageView convertRect:avatarImageView.bounds toView:window];
+    backgroundView.backgroundColor =[UIColor blackColor];
+    backgroundView.alpha =0.5;
+    UIImageView *imageView =[[UIImageView alloc]initWithFrame:oldframe];
+    imageView.image =image;
+    imageView.tag =1;
+    [backgroundView addSubview:imageView];
+    [window addSubview:backgroundView];
+    //点击图片缩小的手势
+    UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideImage:)];
+    [backgroundView addGestureRecognizer:tap];
+    [UIView animateWithDuration:0.3 animations:^{
+        imageView.frame =CGRectMake(0,([UIScreen mainScreen].bounds.size.height-image.size.height*[UIScreen mainScreen].bounds.size.width/image.size.width)/2, [UIScreen mainScreen].bounds.size.width, image.size.height*[UIScreen mainScreen].bounds.size.width/image.size.width);
+        backgroundView.alpha =1;
+    }];
+}
++(void)hideImage:(UITapGestureRecognizer *)tap
+{
+    UIView *backgroundView = tap.view;
+    UIImageView *imageView =(UIImageView *)[tap.view viewWithTag:1];
+    [UIView animateWithDuration:0.3 animations:^{
+        imageView.frame = CGRectZero;
+        backgroundView.alpha =0;
+    } completion:^(BOOL finished) {
+        [backgroundView removeFromSuperview];
+    }];
+}
+
++(UIImage *)getCacheImage:(NSString*)url{
+    NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:[NSURL URLWithString:url]];
+    UIImage *lastCachedImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:key];
+    return lastCachedImage;
+}
+
 @end

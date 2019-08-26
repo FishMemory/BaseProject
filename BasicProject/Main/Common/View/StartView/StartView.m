@@ -25,7 +25,7 @@
     
 //  scrollView
     
-    self.startScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, -UNABLE_SPACE_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT + UNABLE_SPACE_HEIGHT)];
+    self.startScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, -kTopSafeHeight, SCREEN_WIDTH, SCREEN_HEIGHT + kTopSafeHeight)];
     
     self.startScroll.backgroundColor = [UIColor whiteColor];
     

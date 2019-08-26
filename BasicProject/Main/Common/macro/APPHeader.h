@@ -1,6 +1,6 @@
 //
 //  APPHeader.h
-//   
+//
 //
 //  Created by   on 16/2/24.
 //  Copyright © 2016年  . All rights reserved.
@@ -8,7 +8,7 @@
 //  宏定义和声明信息
 
 #import "DeleLine.h"
-#import "AppHelper.h" 
+#import "AppHelper.h"
 
 #ifndef Project_APPHeader_h
 #define Project_APPHeader_h
@@ -50,11 +50,9 @@
 
 #define IPhone5_UP ([UIScreen mainScreen].bounds.size.width >320.f)
 // 直接使用UI图上的尺寸，像素单位
-#ifdef IPhone5_UP
+
 #define UI_WIDTH 750.0
-#else
-#define UI_WIDTH 640.0
-#endif
+
 #define PX(px) (SCREEN_WIDTH/UI_WIDTH*px)
 
 //  宏
@@ -77,11 +75,13 @@
 
 // 16进制颜色码（#FFFFFF）转RGB
 #define UIColorFromRGBA(RGBValue, alphaValue) [UIColor colorWithRed:((float)((RGBValue & 0xFF0000) >> 16))/255.0 green:((float)((RGBValue & 0x00FF00) >> 8))/255.0 blue:((float)(RGBValue & 0x0000FF))/255.0 alpha:alphaValue]
+//16进制色值
+#define HEXCOLOR(c) [UIColor colorWithRed:((c>>16)&0xFF)/255.0 green:((c>>8)&0xFF)/255.0 blue:(c&0xFF)/255.0 alpha:1.0]
 
 #define COL_NAVI [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1]
 
 #define FONT_SIZE [UIFont systemFontOfSize:14]
- // 灰字体颜色
+// 灰字体颜色
 #define COL_GRAY_FONT rgb(163, 163, 163)
 
 //  153 号灰色
@@ -90,7 +90,7 @@
 //  192 浅灰色
 #define COL_GRAY_FONT_192 rgb(192,192,192)
 //  纯白色
-#define COL_GRAY_WHITE [UIColor whiteColor]
+#define COL_WHITE [UIColor whiteColor]
 //  51 号黑色
 #define COL_GRAY_FONT_51 rgb(51,51,51)
 //  自定义多少颜色值
@@ -104,8 +104,12 @@
 
 #define COL_GRAY_LINE  [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1]// 灰色线条
 
- // 首页灰色背景
+// 首页灰色背景
 #define COL_BKG_GRAY  [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1]
+// 渐变颜色起始
+#define COL_CHANG_START  HEXCOLOR(0x0093CD)
+// 渐变颜色 后半
+#define COL_CHANG_END  HEXCOLOR(0x00C47A)
 
 #define COL_SEARCH_BAR [UIColor colorWithWhite:0.89 alpha:1]
 //#define COL_SEARCH_BAR  [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1]
@@ -116,19 +120,19 @@
 // 加粗 Helvetica-Bold
 #define FONT_BOLD(sizes) [UIFont boldSystemFontOfSize:sizes]
 // 斜体
-#define FONT_ITALIC(size) [UIFont italicSystemFontOfSize:PX(size)] 
+#define FONT_ITALIC(size) [UIFont italicSystemFontOfSize:PX(size)]
 
 //  获取验证码颜色
 #define COL_YELLOW_BT_GETCODE rgb(255, 192, 0)
 
 //  不能点击按钮背景色
-#define COL_GRAY_UNCLICK_BUTTON [UIColor colorWithRed:224 /255.0 green:224 / 255.0 blue:224 / 255.0 alpha:1]
+#define COL_GRAY_UNCLICK_BUTTON [UIColor colorWithRed:143 /255.0 green:143 / 255.0 blue:143 / 255.0 alpha:1]
 
 //  不能点击按钮的标题
 #define COL_GRAY_UNCLICK_BUTTON_TITLE [UIColor colorWithRed:172 / 255.0 green:172 / 255.0 blue:172 / 255.0  alpha:1]
 
 //  粉红色
-#define COL_PINK [UIColor colorWithRed:255/255.0 green:237/255.0 blue:224.0/255.0 alpha:1]
+#define COL_PINK [UIColor colorWithRed:250/255.0 green:0/255.0 blue:70/255.0 alpha:1]
 
 
 // 首页 字体-----------------
@@ -138,8 +142,9 @@
 #define FONT_DETAIL [UIFont systemFontOfSize:PX(28)]
 // 黑色
 #define COL_BLACK [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1]
-// APP主色调
-#define COL_THEME_BLUE [UIColor colorWithRed:0/255.0 green:178/255.0 blue:238/255.0 alpha:1]/**< 蓝色 >*/
+
+// APP主题色
+#define COL_THEME [UIColor colorWithRed:255/255.0 green:90/255.0 blue:90/255.0 alpha:1]
 
 // APP 浅绿色
 #define COL_LITHT_BLUE [UIColor colorWithRed:20/255.0 green:215/255.0 blue:200/255.0 alpha:1]/**< 浅蓝色 >*/
@@ -163,7 +168,7 @@
 #define IPHONE_6PLUS_5_5 ([UIScreen mainScreen].bounds.size.height==736.0f || [UIScreen mainScreen].bounds.size.height==414.0f)
 #define IPHONE_X ([UIScreen mainScreen].bounds.size.height==812.0f || [UIScreen mainScreen].bounds.size.height==414.0f)
 #define pro 16/9
-// CGRectMake 
+// CGRectMake
 #define FRAME(l,t,w,h) CGRectMake(l, t, w, h)
 
 /**
@@ -208,11 +213,21 @@ return _instace; \
 //获取屏幕 宽度、高度
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
-//iphone x 无效区域 适配
-#define UNABLE_SPACE_HEIGHT ([UIScreen mainScreen].bounds.size.height == 812.0f ? ([[UIApplication sharedApplication] statusBarFrame].size.height+44+34 ) :64)
+//iphone 状态栏
+#define kStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+// 导航栏高度
+#define kNavBarHeight 44.0
+// 导航状态栏 高度
+#define kTopSafeHeight (kStatusBarHeight + kNavBarHeight)
+// tabbar 间距
+#define ktabBarSpaceH (kStatusBarHeight == 20 ? 0 :  34)
 
-//iphone x 导航栏高度 适配
-#define NAVIGATION_SPACE_HEIGHT ([UIScreen mainScreen].bounds.size.height == 812.0f ? ([[UIApplication sharedApplication] statusBarFrame].size.height+44) :64)
+#define IS_IPhoneX_All ([UIScreen mainScreen].bounds.size.height == 812 || [UIScreen mainScreen].bounds.size.height == 896)
+
+#define IPhoneXTabSpace (IS_IPhoneX_All ? 34 : 0)
+
+#define ktabBarHeight 49
+
 //读取本地图片
 #define LOAD_IMAGE(file,ext) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:file ofType:ext]]
 
@@ -223,28 +238,16 @@ return _instace; \
 #define ImageNamed(_pointer) [UIImage imageNamed:_pointer]
 #define ImageData(a) [UIImage imageWithData:(a)]
 
+//定义NSurl对象
+#define UrlString(a) [NSURL URLWithString:a]
+
 //由角度获取弧度 有弧度获取角度
 #define degreesToRadian(x) (M_PI * (x) / 180.0)
 #define radianToDegrees(radian) (radian*180.0)/(M_PI)
-//区分设备和模拟器
-
-//#if TARGET_OS_IPHONE
-////iPhone Device
-//#endif
-
-//#if TARGET_IPHONE_SIMULATOR
-////iPhone Simulator
-//#endif
-//使用ARC和不使用ARC
-//#if __has_feature(objc_arc)
-//compiling with ARC
-//#else
-// compiling without ARC
-//#endif
 
 #define UI_ASYNC_TASK_DELAY(sec, block)  \
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((sec) * NSEC_PER_SEC)), \
-    dispatch_get_main_queue(), (block));
+dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((sec) * NSEC_PER_SEC)), \
+dispatch_get_main_queue(), (block));
 
 
 #define UI_ASYNC_TASK(block)  dispatch_async(dispatch_get_main_queue(), (block));
@@ -300,4 +303,22 @@ DEFER_STRINGIFY(__FILE__) " line " DEFER_STRINGIFY(__LINE__)
 #define KEYWORDIFY try {} @catch (...) {}
 // 最终使用下面的宏
 #define TODO(MSG) KEYWORDIFY PRAGMA_MESSAGE(FORMATTED_MESSAGE(MSG))
+
+/*
+ *注册cell
+ */
+#define cellRegisterNibWith(tableView,nibName,identifier)     [tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:identifier];
+
+#define cellRegisterClassWith(tableView,className,identifier) [tableView registerClass:[className class] forCellReuseIdentifier:identifier];
+
+/*
+ *注册collectioncell
+ */
+#define CollectionCellRegisterNibWith(collection,nibName,identifier)      [collection registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellWithReuseIdentifier:identifier];
+
+#define CollectionCellRegisterClassWith(collection,className,identifier) [collection registerClass:[className class] forCellWithReuseIdentifier:identifier];
+
+#define DefaultCenter [NSNotificationCenter defaultCenter]
+
 #endif /* APPHeader_h */
+

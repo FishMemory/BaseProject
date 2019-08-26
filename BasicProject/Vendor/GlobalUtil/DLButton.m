@@ -81,7 +81,7 @@
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:0];
     for (int i = 0 ; i< nameArray.count; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setTitleColor:COL_THEME_BLUE forState:UIControlStateSelected];
+        [btn setTitleColor:COL_THEME forState:UIControlStateSelected];
         [btn setTitleColor:rgb(102, 102, 102) forState:UIControlStateNormal];
 //        CGFloat btnWidth =  SCREEN_WIDTH/nameArray.count;
         NSString *titleStr = [nameArray objectAtIndexCheck:i];

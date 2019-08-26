@@ -98,7 +98,7 @@
     if(_navigationItemTransparent){
         myWebView = [[UIWebView alloc]initWithFrame:FRAME(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     }else{
-        myWebView = [[UIWebView alloc]initWithFrame:FRAME(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-UNABLE_SPACE_HEIGHT)];
+        myWebView = [[UIWebView alloc]initWithFrame:FRAME(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-kTopSafeHeight)];
     }
     myWebView.backgroundColor = [UIColor whiteColor];
     

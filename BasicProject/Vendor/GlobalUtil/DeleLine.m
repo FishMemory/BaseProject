@@ -18,10 +18,9 @@
             {//10.0的系统字段不一样
                 UIView *view =   (UIView*)obj;
                 for (id obj2 in view.subviews) {
-                    
-                    if ([obj2 isKindOfClass:[UIImageView class]])
-                    {
-                        
+                    UIView *view2 =  (UIView*)obj2;
+                    if ([obj2 isKindOfClass:[UIImageView class]] && view2.height > 1)
+                    { 
                         UIImageView *image =  (UIImageView*)obj2;
                         image.hidden = YES;
                     }

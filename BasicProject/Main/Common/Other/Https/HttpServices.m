@@ -1,6 +1,7 @@
+
 //
 //  HttpServes.m
-//   
+//
 //
 //  Created by 宋亚清 on 16/3/4.
 //  Copyright © 2016年  . All rights reserved.
@@ -56,7 +57,7 @@
     static dispatch_once_t onceQueue;
     static AFSecurityPolicy *policyInstance;
     dispatch_once(&onceQueue, ^{
-        // MichaelTang add 2016.07.07 for https
+        // 宋亚清Tang add 2016.07.07 for https
         NSString *certFilePath = [[NSBundle mainBundle] pathForResource:@"api. .com" ofType:@"der"];
         NSData *certData = [NSData dataWithContentsOfFile:certFilePath];
         if (!certData) {
@@ -89,7 +90,6 @@
 }
 
 
-
 /**
  如果两次相同请求间隔不超过3秒，则提示用户
  */
@@ -112,289 +112,187 @@
     return NO;
 }
 
-/**
- * 基于RESTful的GET请求
- * 用于获取API信息
- * 分页信息保存在
- */
-+(void)get:(NSString*)url _id:(NSNumber*)_id  showBackProgressHD:(BOOL)show  token:(NSString*)token  showError:(BOOL)showErrorToast
-   success:(Success)success
-apiErroBlock:(APIErrorBlock)apiError
-networkErroBlock:(ErrorBlock)networkError
++(void)get:(NSString*)url showBackProgressHD:(BOOL)show showError:(BOOL)showErrorToast success:(Success)success networkErroBlock:(ErrorBlock)networkError
 {
     if ([NetworkUtils checkNetWork:nil]){
     }else{
         [[ProgressHUD instance] showBackProgressHD:show inView:APP.window info:@""];
-        NSLog(@"####>>>> 用户token ：%@",token);
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         
-        NSRange range = [url rangeOfString:@"https"options:NSCaseInsensitiveSearch];
-        
-        if (range.location != NSNotFound){
-            manager.securityPolicy = [HttpServices sharedSecurityPolicy];
-            manager.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
-        }
-        
-        // 注意
-        // [manager.operationQueue cancelAllOperations];
-        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        
-        // AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
-        
         manager.requestSerializer.timeoutInterval = 15.0;
-        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-        [manager.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
         
-        NSString* tokenParm = @"";
-        if(token != nil || token.length > 0){
-            tokenParm = token;
-        }
-        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", tokenParm] forHTTPHeaderField:@"Authorization"];
-        
-        // 区分测试模式和正式模式
-#ifdef DEBUG
-        [manager.requestSerializer setValue:@"1" forHTTPHeaderField:@"X-TEST-MODE"];
-#elif defined PROD
-        [manager.requestSerializer setValue:@"1" forHTTPHeaderField:@"X-TEST-MODE"];
-#endif
         // 将_id和url拼接
         NSString *urlString = url;
-        if(_id != nil && [_id integerValue] > 0){
-            urlString= [NSString stringWithFormat:@"%@/%@", url, _id];
-        }
-        urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
         
-        NSLog(@"####>>>> 请求的 urlStr = %@",urlString);
+        //        NSLog(@"####>>>> 请求的 urlStr = %@",urlString);
         
         [manager GET:urlString parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            // 接收数据处理
-            NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-            NSDictionary *allHeaders = response.allHeaderFields;
-            
-            // v1.41开始不再使用自己的加密，而使用了Https
-            // API接口里加密数据有问题，PHP返回的是实体Model的加密，导致数据有问题
-            // 检查服务器响应有没有加密
-            //            NSString* encode = [allHeaders valueForKey:@"encode"];
-            //            NSString* sign = [allHeaders valueForKey:@"sign"];
-            //            NSString* timestamp = [allHeaders valueForKey:@"timestamp"];
-            
-            NSNumber* curPage = [allHeaders objectForKey:@"X-Pagination-Current-Page"];
-            NSNumber* pageCount = [allHeaders objectForKey:@"X-Pagination-Page-Count"];
-            NSNumber* countPerPage = [allHeaders objectForKey:@"X-Pagination-Per-Page"];
-            NSNumber* totalCount = [allHeaders objectForKey:@"X-Pagination-Total-Count"];
-            NSLog(@"####>>>> 页数 %@",pageCount);
-            
-            Pagination* page = nil;
-            if(curPage != nil && pageCount != nil && countPerPage != nil && totalCount != nil){
-                page = [[Pagination alloc]init];
-                page.currentPageNumber = [curPage integerValue];
-                page.totalPageCount = [pageCount integerValue];
-                page.totalDataCount = [totalCount integerValue];
-                page.countPerPage = [countPerPage integerValue];
-                page.baseUrl = url;
-            }
-            
             
             NSDictionary* respObj = responseObject;
             
             //  隐藏进度圈
-            [[ProgressHUD instance] showBackProgressHD:NO inView:APP.window info:@"正在载入，请稍候..."];
+            [[ProgressHUD instance] showBackProgressHD:NO inView:APP.window info:@"Loading..."];
             
             // API接口返回错误
-            NSNumber* code = nil;
+            NSString* code = nil;
             NSString *error = nil;
             @try {
                 code = [respObj objectForKey:@"code"];
                 error = [respObj objectForKey:@"message"];
                 error =  error.length > 0 ? error : [responseObject objectForKey:@"msg"];
             } @catch (NSException *exception) {
-            }
-            // code返回非0,说明接口返回错误
-            if (code != nil && ![code isEqualToNumber:@200]) {
-                if ([code isEqualToNumber:@5003]){
-                    //                [AccountValidate AppLogOut];
-
-                }else{
-                    if (error.length > 0 && showErrorToast)
-                        SHOW_WARN_INFO(APP.window, 2.5, error);
                 
-                    NSLog(@"## 接口返回失败");
-                    if(apiError != nil){
-                        apiError(respObj);
-                        return;
-                    }
-                }
-             
-            }else{
-                // 接口里没有code值，说明API返回正常数据
-                //                NSLog(@"接口请求成功%@", [respObj JSONString]);
-                success(respObj, page);
-                return ;
             }
-            
-            
+            if ([code intValue] != 200) {
+#ifdef DEBUG  // 开发
+                SHOW_WARN_INFO(APP.window, 1.5, error);
+#endif
+            }
+            if(success){
+                success([responseObject objectForKey:@"content"]);
+            }
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [[ProgressHUD instance] showBackProgressHD:NO inView:APP.window info:@""];
-            NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-            if(response.statusCode == 500){
-                NSLog(@"## 内部服务器错误");
-                if(showErrorToast)
-                    SHOW_WARN_INFO(APP.window, 2.5, @"内部服务器错误，程序猿们在努力修复中");
-            }else if(response.statusCode == 503){
-                NSLog(@"## 服务器宕机");
-                if(showErrorToast)
-                    SHOW_WARN_INFO(APP.window, 2.5, @"服务器累了，暂时休息一会");
-            }else if (error.code == 5003){
-                
-                
-            }else{
-                
-                NSLog(@"## 服务器挂了 错误码 %@",@(response.statusCode));
-                if(showErrorToast)
-                    SHOW_WARN_INFO(APP.window, 2.5, @"网络开小差了");
-            }
+            
+            if(showErrorToast)
+                SHOW_WARN_INFO(APP.window, 2.5,@"Network connection error");
+            
             if(networkError)
                 networkError(task, error);
         }];
     }
 }
 
-/**
- * 基于RESTful的post请求
- * 用于向API里添加数据
- */
-+(void)post:(NSString*)url _id:(NSNumber*)_id showBackProgressHD:(BOOL)show token:(NSString*)token   showError:(BOOL)showErrorToast dataDic:(NSDictionary*)dataDic
-    success:(Success)success
-apiErroBlock:(APIErrorBlock)apiError
-networkErroBlock:(ErrorBlock)networkError
+
+
++(void)post:(NSString*)url  showBackProgressHD:(BOOL)show  showError:(BOOL)showErrorToast dataDic:(NSDictionary*)dataDic
+    success:(Success)success networkErroBlock:(ErrorBlock)networkError
 {
-    // 将_id和url拼接
-    NSString *urlString = url;
-    if(_id != nil && [_id integerValue] > 0){
-        urlString= [NSString stringWithFormat:@"%@/%@", url, _id];
-    }
-    
-    if([HttpServices multiQuickAction:[@"post_" stringByAppendingString:urlString] minDelay:1]){
-        //        SHOW_WARN_INFO(APP.window, 2, @"重复的提交请求");
-        return;
-    }
     if ([NetworkUtils checkNetWork:nil]){
     }else{
-        
-        [[ProgressHUD instance] showBackProgressHD:show inView:APP.window info:@"正在载入，请稍候..."];
+        if (show) {
+            [[ProgressHUD instance] showBackProgressHD:show inView:APP.window info:@"Loading..."];
+        }
+        if (!(url.length > 0)) {
+            [[ProgressHUD instance] showBackProgressHD:NO inView:APP.window info:@"Loading..."];
+            return;
+        }
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        NSRange range = [url rangeOfString:@"https"options:NSCaseInsensitiveSearch];
         
-        if (range.location != NSNotFound){
-            manager.securityPolicy = [HttpServices sharedSecurityPolicy];
-            manager.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
-        }
-        
-        // 注意
-        // [manager.operationQueue cancelAllOperations];
         manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-        manager.responseSerializer = [AFJSONResponseSerializer serializer];
         manager.requestSerializer.timeoutInterval = 15.0;
-        [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"]; 
-        [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@", APP.curUserId]  forHTTPHeaderField:@"x-header-uid"];
-        // ios-1.0后面的版本号和App内的版本号一致
-        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-        NSString * version = [NSString stringWithFormat:@"ios-%@",[infoDictionary objectForKey:@"CFBundleShortVersionString"]];
-
-        [manager.requestSerializer setValue:version forHTTPHeaderField:@"x-header-version"];
-        NSString * tkn = token;
-        if(tkn == nil || tkn.length <= 0){
-            tkn = @"";
-        }
-        [manager.requestSerializer setValue:tkn forHTTPHeaderField:@"x-header-token"];
-        [manager.requestSerializer setValue:@"" forHTTPHeaderField:@"x-header-sign"];
+        [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
         
-        // 区分测试模式和正式模式
-#ifdef DEBUG
-        [manager.requestSerializer setValue:@"1" forHTTPHeaderField:@"X-TEST-MODE"];
-#elif defined PROD
-        [manager.requestSerializer setValue:@"0" forHTTPHeaderField:@"X-TEST-MODE"];
-#endif
+        manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
         
-        urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSLog(@"####>>>>urlStr = %@",urlString);
-        NSLog(@"####>>>>上传数据 %@", dataDic);
-    
-        [manager POST:urlString parameters:dataDic progress:^(NSProgress * _Nonnull downloadProgress) {
+        [manager.requestSerializer setValue:APP.token forHTTPHeaderField:@"token"];
+        //        [manager.requestSerializer setValue:@"" forHTTPHeaderField:@"token"];
+        
+        NSMutableDictionary *sendParam = [NSMutableDictionary dictionaryWithDictionary:dataDic];
+        //        [sendParam setObjectCheck:APP.curUserId forKey:@"uid"];
+        //        NSLog(@"####>>>>上传数据 %@", dataDic);
+        [manager POST:url parameters:sendParam progress:^(NSProgress * _Nonnull uploadProgress) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             //  隐藏进度圈
-            [[ProgressHUD instance] showBackProgressHD:NO inView:APP.window info:@""];
-            NSNumber* curPage = [responseObject objectForKeyCheck:@"page"];
-            NSNumber* pageCount = [responseObject objectForKeyCheck:@"pages"];
-            NSLog(@"####>>>> 页数 %@",pageCount);
-            Pagination *page = nil;
-            if(curPage != nil && pageCount != nil){
-                page = [[Pagination alloc]init];
-                page.currentPageNumber = [curPage integerValue];
-                page.totalPageCount = [pageCount integerValue];
-                page.baseUrl = url;
+            if (show) {
+                [[ProgressHUD instance] showBackProgressHD:NO inView:APP.window info:@"Loading..."];
             }
-            
-            
-            //            NSLog(@"服务器响应数据 %@",responseObject);
-            
-            
+            //  NSLog(@"服务器响应数据 %@",responseObject);
             // API接口返回错误
-            NSNumber* code = nil;
+            id code = nil;
+            
             NSString *error = nil;
             @try {
-                code = [responseObject objectForKey:@"code"];
-                error = [responseObject objectForKey:@"msg"];
-//                error =  error.length > 0 ? error : [responseObject objectForKey:@"msg"];
+                code = [responseObject objectForKeyCheck:@"code"];
+                error = [responseObject objectForKeyCheck:@"msg"];
+                error =  error.length > 0 ? error : [responseObject objectForKeyCheck:@"message"];
             } @catch (NSException *exception) {
             }
             // code返回非200,说明接口返回错误
-            if (code != nil && ![code isEqualToNumber:@200] && ![code isEqualToNumber:@199] && ![code isEqualToNumber:@201]) {
-                if ([code isEqualToNumber: @5003]){
-//                    [AccountValidate autoLogin:^(NSDictionary *dic) {
-//                    } fail:^(NSDictionary *dic) {
-//                        
-//                    }];
-                }else{
-                    if (error.length > 0 && showErrorToast)
-                    SHOW_WARN_INFO(APP.window, 1.5, error);
+            if (showErrorToast && [code intValue] != 200) {
+                if(networkError){
+                    SHOW_WARN_INFO(APP.window, 1.5,error);
+                    networkError(nil, nil);
                 }
-                NSLog(@"## 接口返回失败 %@\n%@",url,responseObject);
-                if(apiError != nil){
-                    apiError(responseObject);
-                    return;
-                }
+                
+#ifdef DEBUG  // 开发
+                SHOW_WARN_INFO(APP.window, 1.5, error);
+#endif
             }else{
-                // 接口里没有code值，说明API返回正常数据
-//                NSLog(@"接口请求成功%@", [responseObject JSONString]);
                 if(success){
-                    success(responseObject, page);
+                    success([responseObject objectForKey:@"content"]);
                 }
-                return ;
             }
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            [[ProgressHUD instance] showBackProgressHD:NO inView:APP.window info:@""];
-            NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-            if(response.statusCode == 500){
-                NSLog(@"## 内部服务器错误");
-                if(showErrorToast)
-                    SHOW_WARN_INFO(APP.window, 1.5, @"内部服务器错误，程序猿们在努力修复中");
-            }else if(response.statusCode == 503){
-                NSLog(@"## 服务器宕机");
-                if(showErrorToast)
-                    SHOW_WARN_INFO(APP.window, 1.5, @"服务器累了，暂时休息一会");
-                
-            }else if (error.code == 5003){
+            [[ProgressHUD instance] showBackProgressHD:NO inView:APP.window info:@"Loading..."];
+            if(showErrorToast)
+                SHOW_WARN_INFO(APP.window, 1.5, @"网络错误");
+            
+            NSLog(@"网络请求错误信息 %@",error);
+            if(networkError)
+                networkError(task, error);
+        }];
+    }
+}
 
-                
-            }else{
-                NSLog(@"## 服务器挂了");
-                if(showErrorToast)
-                    SHOW_WARN_INFO(APP.window, 1.5, @"网络开小差了");
+
+//我的shop编辑商品post请求,传参数array
++(void)shopPost:(NSString*)url  showBackProgressHD:(BOOL)show  showError:(BOOL)showErrorToast dataDic:(id)dataDic
+        success:(Success)success networkErroBlock:(ErrorBlock)networkError
+{
+    if ([NetworkUtils checkNetWork:nil]){
+    }else{
+        
+        [[ProgressHUD instance] showBackProgressHD:show inView:APP.window info:@"Loading..."];
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+        manager.requestSerializer.timeoutInterval = 15.0;
+        [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        
+        manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
+        
+        
+        NSLog(@"####>>>>上传数据 %@", dataDic);
+        
+        [manager POST:url parameters:dataDic progress:^(NSProgress * _Nonnull downloadProgress) {
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            //  隐藏进度圈
+            [[ProgressHUD instance] showBackProgressHD:NO inView:APP.window info:@"Loading..."];
+            
+            //              NSLog(@"服务器响应数据 %@",responseObject);
+            // API接口返回错误
+            id code = nil;
+            
+            NSString *error = nil;
+            @try {
+                code = [responseObject objectForKeyCheck:@"code"];
+                error = [responseObject objectForKeyCheck:@"msg"];
+                error =  error.length > 0 ? error : [responseObject objectForKeyCheck:@"message"];
+            } @catch (NSException *exception) {
             }
+            // code返回非200,说明接口返回错误
+            if ([code intValue] != 200) {
+#ifdef DEBUG  // 开发
+                SHOW_WARN_INFO(APP.window, 1.5, error);
+#endif
+            }
+            if(success){
+                success(responseObject);
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [[ProgressHUD instance] showBackProgressHD:NO inView:APP.window info:@"Loading..."];
+            if(showErrorToast)
+                SHOW_WARN_INFO(APP.window, 1.5, @"Network connection error");
+            
             NSLog(@"网络请求错误信息 %@",error.userInfo);
             if(networkError)
                 networkError(task, error);
@@ -403,266 +301,73 @@ networkErroBlock:(ErrorBlock)networkError
 }
 
 
-/**
- * 基于RESTful的put请求
- * 用于更新API数据信息
- */
-+(void)put:(NSString*)url _id:(NSNumber*)_id  showBackProgressHD:(BOOL)show  paramete:(NSString *)paramete token:(NSString*)token  showError:(BOOL)showErrorToast dataDic:(NSDictionary*)dataDic
-   success:(Success)success
-apiErroBlock:(APIErrorBlock)apiError
-networkErroBlock:(ErrorBlock)networkError
-{
-    // 将_id和url拼接
-    NSString *urlString = url;
-    if(_id != nil && [_id integerValue] > 0){
-        paramete = paramete.length > 0 ? [@"/" stringByAppendingString:paramete ]: @"";
-        urlString= [NSString stringWithFormat:@"%@/%@%@", url, _id,paramete];
-    }
++ (void)postNetworkDataSuccess:(Success)success failure:(ErrorBlock)failure withUrl:(NSString *)urlStr withParameters:(NSDictionary *)dict {
     
-    if([HttpServices multiQuickAction:[@"post_" stringByAppendingString:urlString] minDelay:1]){
-        SHOW_WARN_INFO(APP.window, 2, @"重复的提交请求");
-        return;
-    }
-    if ([NetworkUtils checkNetWork:nil]){
-    }else{
-        [[ProgressHUD instance] showBackProgressHD:show inView:APP.window info:@"正在载入，请稍候..."];
+    AFHTTPSessionManager *afHttpSessionManager = [AFHTTPSessionManager manager];
+    
+    afHttpSessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    afHttpSessionManager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    afHttpSessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
+    afHttpSessionManager.requestSerializer= [AFHTTPRequestSerializer serializer];
+    [afHttpSessionManager.requestSerializer setValue:@"" forHTTPHeaderField:@"If-None-Match"];
+    [afHttpSessionManager.requestSerializer setValue:APP.token forHTTPHeaderField:@"token"];
+    [afHttpSessionManager POST:urlStr parameters:dict progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        //回调是在主线程中，可以直接更新UI
+        NSLog(@"%@", [NSThread currentThread]);
+        //        NSLog(@"返回data %@",responseObject);
+        if(success) success(responseObject);
         
-        NSRange range = [url rangeOfString:@"https"options:NSCaseInsensitiveSearch];
-        
-        if (range.location != NSNotFound){
-            manager.securityPolicy = [HttpServices sharedSecurityPolicy];
-            manager.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(task,error);
         }
-        
-        // 注意
-        // [manager.operationQueue cancelAllOperations];
-        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        
-        // AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
-        
-        manager.requestSerializer.timeoutInterval = 15.0;
-        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-        [manager.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-        
-        NSString* tokenParm = @"";
-        if(token != nil || token.length > 0){
-            tokenParm = token;
-        }
-        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", tokenParm] forHTTPHeaderField:@"Authorization"];
-
-        // 区分测试模式和正式模式
-#ifdef DEBUG
-        [manager.requestSerializer setValue:@"1" forHTTPHeaderField:@"X-TEST-MODE"];
-#elif defined PROD
-        [manager.requestSerializer setValue:@"1" forHTTPHeaderField:@"X-TEST-MODE"];
-#endif
-        
-        // 将_id和url拼接
-        //        NSString *urlString = url;
-        //        if(_id != nil && [_id integerValue] > 0){
-        //            paramete = paramete.length > 0 ? [@"/" stringByAppendingString:paramete ]: @"";
-        //            urlString= [NSString stringWithFormat:@"%@/%@%@", url, _id,paramete];
-        //        }
-        //        urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        NSLog(@"####>>>>urlStr = %@",urlString);
-        
-        NSLog(@"####>>>>上传数据 %@", [dataDic JSONString]);
-        
-        [manager PUT:urlString parameters:dataDic
-             success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
-         {
-             // 接收数据处理
-             //             NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-             //             NSDictionary *allHeaders = response.allHeaderFields;
-             
-             //             NSLog(@"服务器响应数据 %@",responseObject);
-             
-             //  隐藏进度圈
-             [[ProgressHUD instance] showBackProgressHD:NO inView:APP.window info:@""];
-             
-             // API接口返回错误
-             NSNumber* code = nil;
-             NSString *error = nil;
-             @try {
-                 code = [responseObject objectForKey:@"code"];
-                 error = [responseObject objectForKey:@"message"];
-                 error =  error.length > 0 ? error : [responseObject objectForKey:@"msg"];
-             } @catch (NSException *exception) {
-             }
-             // code返回非200,说明接口返回错误
-             if (code != nil && ![code isEqualToNumber:@200]) {
-                 [[ProgressHUD instance] showBackProgressHD:NO inView:APP.window info:@""];
-                 
-                 if ([code isEqualToNumber: @5003]){
-
-                 }else{
-                     if (error.length > 0 && showErrorToast)
-                         SHOW_WARN_INFO(APP.window, 1.5, error);
-                 }
-                 
-                 NSLog(@"## 接口返回失败");
-                 if(apiError != nil){
-                     apiError(responseObject);
-                     return;
-                 }
-             }else{
-                 // 接口里没有code值，说明API返回正常数据
-                 NSLog(@"接口请求成功%@", [responseObject JSONString]);
-                 success(responseObject, nil);
-                 return ;
-             }
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [[ProgressHUD instance] showBackProgressHD:NO inView:APP.window info:@""];
-             NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-             
-             if(response.statusCode == 500){
-                 NSLog(@"## 内部服务器错误");
-                 if(showErrorToast)
-                     SHOW_WARN_INFO(APP.window, 1.5, @"内部服务器错误，程序猿们在努力修复中");
-             }else if(response.statusCode == 503){
-                 NSLog(@"## 服务器宕机");
-                 if(showErrorToast)
-                     SHOW_WARN_INFO(APP.window, 1.5, @"服务器累了，暂时休息一会");
-             }else if (error.code == 5003){
-
-                 
-             }else{
-                 NSLog(@"## 服务器挂了");
-                 if(showErrorToast)
-                     SHOW_WARN_INFO(APP.window, 1.5, @"网络开小差了");
-             }
-             if(networkError)
-                 networkError(task, error);
-             
-         }];
-    }
+        NSLog(@"get failure:%@",error);
+    }];
 }
 
 
-/**
- * 基于RESTful的Delete请求
- * 用于删除API指定的数据
- */
-+(void)restDelete:(NSString*)url _id:(NSNumber*)_id  showBackProgressHD:(BOOL)show  token:(NSString*)token showError:(BOOL)showErrorToast
-          success:(Success)success
-     apiErroBlock:(APIErrorBlock)apiError
- networkErroBlock:(ErrorBlock)networkError
++(void)uploadFileWithFormat:(NSData*)data dic:(NSDictionary*)dict url:(NSString*)url format:(NSString *)suffix success:(Success)sucess failed:(APIErrorBlock)failed
 {
-    // 将_id和url拼接
-    NSString *urlString = url;
-    if(_id != nil && [_id integerValue] > 0){
-        urlString= [NSString stringWithFormat:@"%@/%@", url, _id];
-    }
-    
-    if([HttpServices multiQuickAction:[@"post_" stringByAppendingString:urlString] minDelay:1]){
-        //        SHOW_WARN_INFO(APP.window, 2, @"重复的提交请求");
+    if(suffix == nil){
+        SHOW_WARN_INFO(APP.window, 1.5, @"指定上传格式format");
+        if(failed){
+            failed(nil);
+        }
         return;
     }
-    
-    if ([NetworkUtils checkNetWork:nil]){
-    }else{
-        [[ProgressHUD instance] showBackProgressHD:show inView:APP.window info:@"正在载入，请稍候..."];
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        NSRange range = [url rangeOfString:@"https"options:NSCaseInsensitiveSearch];
-        if (range.location != NSNotFound){
-            manager.securityPolicy = [HttpServices sharedSecurityPolicy];
-            manager.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+    [[ProgressHUD instance] showBackProgressHD:YES inView:APP.window info:@"uploading.."];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer.timeoutInterval = 20;
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain", @"multipart/form-data", @"application/json", @"text/html", @"image/jpeg", @"image/png", @"application/octet-stream", @"text/json", nil];
+    [manager POST:url parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        if([suffix isEqualToString:@"jpg"]){
+            [formData appendPartWithFileData:data name:@"file" fileName:[NSString stringWithFormat:@"%ld.jpg", (long)[[NSDate date] timeIntervalSince1970]] mimeType:@"image/jpeg"];
+        }else if([suffix isEqualToString:@"png"]){
+            [formData appendPartWithFileData:data name:@"file" fileName:[NSString stringWithFormat:@"%ld.png", (long)[[NSDate date] timeIntervalSince1970]] mimeType:@"image/png"];
+        }else if([suffix isEqualToString:@"mp4"]){
+            [formData appendPartWithFileData:data name:@"file" fileName:[NSString stringWithFormat:@"%ld.mp4", (long)[[NSDate date] timeIntervalSince1970]] mimeType:@"image/mp4"];
+        }else if([suffix isEqualToString:@"wav"]){
+            [formData appendPartWithFileData:data name:@"file" fileName:[NSString stringWithFormat:@"%ld.wav", (long)[[NSDate date] timeIntervalSince1970]] mimeType:@"audio/x-wav"];
+        } else if([suffix isEqualToString:@"mp3"]){
+            [formData appendPartWithFileData:data name:@"aFile" fileName:[NSString stringWithFormat:@"%ld.mp3", (long)[[NSDate date] timeIntervalSince1970]] mimeType:@"multipart/form-data"];
+            //            [formData appendPartWithFormData:data name:[NSString stringWithFormat:@"%ld.mp3", (long)[[NSDate date] timeIntervalSince1970]]];
         }
-        // 注意
-        // [manager.operationQueue cancelAllOperations];
-        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        
-        // AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
-        
-        manager.requestSerializer.timeoutInterval = 15.0;
-        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-        [manager.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-        
-        NSString* tokenParm = @"";
-        if(token != nil || token.length > 0){
-            tokenParm = token;
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        [[ProgressHUD instance] showBackProgressHD:NO inView:APP.window info:@"uploading.."];
+        SHOW_WARN_INFO(APP.window, 1.5, @"上传成功");
+        if(sucess){
+            sucess(responseObject);
         }
-        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", tokenParm] forHTTPHeaderField:@"Authorization"];
-
-        // 区分测试模式和正式模式
-#ifdef DEBUG
-        [manager.requestSerializer setValue:@"1" forHTTPHeaderField:@"X-TEST-MODE"];
-#elif defined PROD
-        [manager.requestSerializer setValue:@"1" forHTTPHeaderField:@"X-TEST-MODE"];
-#endif
-        // 将_id和url拼接
-        NSString *urlString = url;
-        if(_id != nil && [_id integerValue] > 0){
-            urlString= [NSString stringWithFormat:@"%@/%@", url, _id];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [[ProgressHUD instance] showBackProgressHD:NO inView:APP.window info:@"uploading.."];
+        
+        SHOW_WARN_INFO(APP.window, 1.5, @"上传失败");
+        if(failed){
+            failed(nil);
         }
-        urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        NSLog(@"####>>>>urlStr = %@",urlString);
-        
-        [manager DELETE:urlString parameters:nil
-                success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
-         {
-             NSLog(@"服务器响应数据 %@",responseObject);
-             
-             //  隐藏进度圈
-             [[ProgressHUD instance] showBackProgressHD:NO inView:APP.window info:@""];
-             
-             // API接口返回错误
-             NSNumber* code = nil;
-             NSString *error = nil;
-             @try {
-                 code = [responseObject objectForKey:@"code"];
-                 error = [responseObject objectForKey:@"message"];
-                 error =  error.length > 0 ? error : [responseObject objectForKey:@"msg"];
-             } @catch (NSException *exception) {
-             }
-             // code返回非0,说明接口返回错误
-             if (code != nil && ![code isEqualToNumber:@200]) {
-                 if ([code isEqualToNumber: @5003]){
-
-                 }else{
-                     if (error.length > 0 && showErrorToast)
-                         SHOW_WARN_INFO(APP.window, 1.5, error);
-                 }
-                 
-                 NSLog(@"## 接口返回失败");
-                 if(apiError != nil){
-                     apiError(responseObject);
-                     return;
-                 }
-             }else{
-                 // 接口里没有code值，说明API返回正常数据
-                 NSLog(@"接口请求成功%@", [responseObject JSONString]);
-                 success(responseObject, nil);
-                 return ;
-             }
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [[ProgressHUD instance] showBackProgressHD:NO inView:APP.window info:@""];
-             NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-             if(response.statusCode == 500){
-                 NSLog(@"## 内部服务器错误");
-                 if(showErrorToast)
-                     SHOW_WARN_INFO(APP.window, 1.5, @"内部服务器错误，程序猿们在努力修复中");
-             }else if(response.statusCode == 503){
-                 NSLog(@"## 服务器宕机");
-                 if(showErrorToast)
-                     SHOW_WARN_INFO(APP.window, 1.5, @"服务器累了，暂时休息一会");
-             }else if (error.code == 5003){
-
-                 
-             }else{
-                 NSLog(@"## 服务器挂了");
-                 if(showErrorToast)
-                     SHOW_WARN_INFO(APP.window, 1.5, @"网络开小差了");
-             }
-             if(networkError)
-                 networkError(task, error);
-             
-         }];
-    }
+    }];
 }
 
 +(void)uploadFile:(NSData*)data upLoadUrl:(NSString*)upLoadUrl success:(SuccessBlock)sucess failed:(APIErrorBlock)failed
@@ -722,14 +427,13 @@ networkErroBlock:(ErrorBlock)networkError
             sucess(responseObject);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [[ProgressHUD instance] showBackProgressHD:NO inView:APP.window info:@"正在上传"]; 
+        [[ProgressHUD instance] showBackProgressHD:NO inView:APP.window info:@"正在上传"];
         SHOW_WARN_INFO(APP.window, 1.5, @"上传失败");
         if(failed){
             failed(nil);
         }
     }];
 }
-
 
 /**
  *  多图上传
@@ -752,7 +456,7 @@ networkErroBlock:(ErrorBlock)networkError
     [manager POST:url parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         int i = 0;
         //根据当前系统时间生成图片名称
-
+        
         NSTimeInterval time =  [[NSDate date] timeIntervalSince1970];
         for (UIImage *image in images) {
             i+= 1;
@@ -763,16 +467,16 @@ networkErroBlock:(ErrorBlock)networkError
             }else{
                 imageData = UIImageJPEGRepresentation(image, 1.0f);
             }
-//            [formData appendPartWithFileData:imageData name:parameter fileName:fileName mimeType:@"image/jpg/png/jpeg"];
+            //            [formData appendPartWithFileData:imageData name:parameter fileName:fileName mimeType:@"image/jpg/png/jpeg"];
             [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/png"];
         }
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-
+        
         NSLog(@"common post json = %@", responseObject);
-          [[ProgressHUD instance]  showBackProgressHD:NO inView:APP.window info:@"正在上传" ];
+        [[ProgressHUD instance]  showBackProgressHD:NO inView:APP.window info:@"正在上传" ];
         succeedBlock(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (error) {

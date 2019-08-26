@@ -119,46 +119,37 @@
 -(NSString *)timeIntervalForMatterToDateformatType:(NSString *)formatType;
 
 /**
- *  设置两种不同的字体大下，颜色 根据输入的rang
- *
- *  @param editString            改变的文字
- *  @param leadRang              前部分
- *  @param laedPartColor         laedPartColor 前部分颜色
- *  @param leadPartFontsize      leadPartFontsize 前部分字号
- *  @param traillingPartColor    traillingPartColor 后面的颜色
- *  @param traillingPartFontsize traillingPartFontsize 后面的字体大小
- *
- *  @return return value 返回可变字符串
+ 设置两种不同的字体大下，颜色 根据输入的rang
+ @param leadRang 前部分
+ @param laedColor 前部分颜色
+ @param leadFontsize 前部分字号
+ @param trailColor 后面的颜色
+ @param trailFontsize 后面的字体大小
+ @return 返回可变字符串
  */
--(NSMutableAttributedString *)setDifferentFontSizeAndFontColorInlineWithleadpartRang:(NSRange)leadRang  laedColor:(UIColor *)laedPartColor leadFontsize:(CGFloat)leadPartFontsize trailColor:(UIColor *)traillingPartColor ltrailFontsize:(CGFloat)traillingPartFontsize;
+-(NSMutableAttributedString *)setDiffFontAndColorWithRang:(NSRange)leadRang  laedColor:(UIColor *)laedColor leadFontsize:(CGFloat)leadFontsize trailColor:(UIColor *)trailColor trailFontsize:(CGFloat)trailFontsize;
+
+/**
+ 设置两种不同的字体大小
+ @param leadRang 前部分的rang
+ @param leadsize 前部分的字体大小
+ @param trailsize 后部分的字体大小
+ @return  可变字符串
+ */
+-(NSMutableAttributedString *)setDiffFontWithRang:(NSRange)leadRang  leadFontsize:(CGFloat)leadsize  ltrailFontsize:(CGFloat)trailsize;
 
 
 /**
- *  设置两种不同的字体大小
- *
- *  @param editString            要改变的文字
- *  @param leadRang              前部分的rang
- *  @param leadPartFontsize      leadPartFontsize 前部分的字体大小
- *  @param traillingPartFontsize traillingPartFontsize 后部分的字体大小
- *
- *  @return 可变字符串
- */
--(NSMutableAttributedString *)setDifferentFontSizeInlineWithleadpartRang:(NSRange)leadRang  leadFontsize:(CGFloat)leadPartFontsize  ltraillingFontsize:(CGFloat)traillingPartFontsize;
+ 设置两个不同的字体颜色
 
-/**
- *  设置两个不同的字体颜色
- *
- *  @param editString         editString 改变的文字
- *  @param leadRang           leadRang 前部分rang
- *  @param laedPartColor      前面字体颜色
- *  @param traillingPartColor 后面字体颜色
- *
- *  @return 返回可变字符串
+ @param leadRang 前部分
+ @param lColor 前面字颜色
+ @param tColor 后面颜色
+ @return   处理后的可变字符串
  */
--(NSMutableAttributedString *)setDifferentFontColorInlineWithleadpartRang:(NSRange)leadRang  laedPartColor:(UIColor *)laedPartColor  traillingPartColor:(UIColor *)traillingPartColor;
-
+-(NSMutableAttributedString *)setDiffFontColorWithleadRang:(NSRange)leadRang  laedColor:(UIColor *)lColor  trailColor:(UIColor *)tColor;
 /**
- *  设置两个不同的字体颜色
+ *  设置多个不同的字体颜色
  *
  *  @param leadRang        leadRang 前部分rang
  *  @param allPartColor    字体颜色
@@ -240,4 +231,10 @@
  @return return value description
  */
 -(NSMutableAttributedString *)setDifColorRang:(NSRange)firstRang  firstColor:(UIColor *)firstColor  second:(UIColor *)secondColor secondRang:(NSRange)sRang other:(UIColor*)otherColor  fontSize:(CGFloat)fontSize;
+
+/// 时长秒数 转时间 时分秒格式 11：34：45
++(NSString*)durationChangeStrWithtimeInterval:(NSInteger)duration;
+
+/// 字符串encode
+- (NSString*)urlencode;
 @end

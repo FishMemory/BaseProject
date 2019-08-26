@@ -212,4 +212,16 @@
 -(UIImage *)bigImageToPointArray:(CGPoint )point1 point2:(CGPoint )point2 point3:(CGPoint )point3 point4:(CGPoint )point4;
 
 + (UIImage *)imageWithOriginalName:(NSString *)imageName ;
+
+/// 主题渐变颜色图片
++(UIImage*)ImageWithColorsSize:(CGSize)size;
+
+/// 图片压缩返回base64
++(NSString *)ZipNSDataWithImage:(UIImage *)sourceImage;
+
+/// 点击图片 放大查看
++(void)showImage:(UIImageView*)avatarImageView;
++(void)hideImage:(UITapGestureRecognizer *)tap;
+/// 根据url获取缓存中图片
++(UIImage *)getCacheImage:(NSString*)url;
 @end

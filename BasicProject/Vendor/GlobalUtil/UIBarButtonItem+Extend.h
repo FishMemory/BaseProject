@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIBarButtonItem (Extend)
-+(instancetype)barButtonItemWithSize:(CGSize)size target:(id)target selector:(SEL)selector ImgName:(NSString *)imgName hlImageColor:(UIColor *)hlImageColor;
-+(instancetype)barButtonItemWithSize:(CGSize)size target:(id)target selector:(SEL)selector ImgName:(NSString *)imgName tintColor:(UIColor *)tintColor;
++(instancetype)barButtonItemWithSize:(CGSize)size target:(id)target selector:(SEL)selector ImgName:(NSString *)imgName titleColor:(UIColor *)Color title:(NSString*)title;
+
++(instancetype)barButtonItemWithSize:(CGSize)size target:(id)target selector:(SEL)selector ImgName:(NSString *)imgName Alignment:(NSInteger)Alignment;
 @end

@@ -65,6 +65,7 @@ CGRect  CGRectMoveToCenter(CGRect rect, CGPoint center);
  */
 - (void)setViewWithRadius:(CGFloat)radius BorderColor:(UIColor *)color BorderWidth:(CGFloat)borderwidth;
 
+-(void)setViewLayerThemeColors:(CGSize)size;
 
 /**
  *  根据标签数组排列视图
@@ -84,5 +85,11 @@ CGRect  CGRectMoveToCenter(CGRect rect, CGPoint center);
 // *  @return 返回所有的按钮高度之和
 // */
 //- (CGFloat)getAllButtonItemsWithDatasource:(NSArray *)dataArray OriginalButtonX:(CGFloat)originalX OrignalButtonY:(CGFloat)originalY;
+
+-(void)setViewFilletSize:(CGSize)size;
+/// 画圆角边框
+-(void)setViewFilletRadius:(CGFloat)radius color:(UIColor*)color;
+
+-(void)createViewShadDow:(UIColor *)color;
 
 @end
