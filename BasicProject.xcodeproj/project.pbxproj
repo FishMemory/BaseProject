@@ -43,7 +43,6 @@
 		EC065727219A779500636786 /* ShareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0656F4219A779500636786 /* ShareModel.m */; };
 		EC065728219A779500636786 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0656F7219A779500636786 /* BaseTableViewCell.m */; };
 		EC065729219A779500636786 /* StartView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0656F9219A779500636786 /* StartView.m */; };
-		EC06572B219A779500636786 /* CaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0656FC219A779500636786 /* CaseTableViewCell.m */; };
 		EC06572D219A779500636786 /* MyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0656FE219A779500636786 /* MyAlertView.m */; };
 		EC0657EC219A7AC600636786 /* JAScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC065730219A7AC500636786 /* JAScrollView.m */; };
 		EC0657ED219A7AC600636786 /* LMJScrollTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC065733219A7AC500636786 /* LMJScrollTextView.m */; };
@@ -215,10 +214,8 @@
 		EC0656F7219A779500636786 /* BaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
 		EC0656F9219A779500636786 /* StartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartView.m; sourceTree = "<group>"; };
 		EC0656FA219A779500636786 /* StartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartView.h; sourceTree = "<group>"; };
-		EC0656FC219A779500636786 /* CaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseTableViewCell.m; sourceTree = "<group>"; };
 		EC0656FE219A779500636786 /* MyAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAlertView.m; sourceTree = "<group>"; };
 		EC065700219A779500636786 /* BaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
-		EC065702219A779500636786 /* CaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseTableViewCell.h; sourceTree = "<group>"; };
 		EC065703219A779500636786 /* MyAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlertView.h; sourceTree = "<group>"; };
 		EC065730219A7AC500636786 /* JAScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAScrollView.m; sourceTree = "<group>"; };
 		EC065731219A7AC500636786 /* JAScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAScrollView.h; sourceTree = "<group>"; };
@@ -678,8 +675,6 @@
 			children = (
 				EC065700219A779500636786 /* BaseTableViewCell.h */,
 				EC0656F7219A779500636786 /* BaseTableViewCell.m */,
-				EC065702219A779500636786 /* CaseTableViewCell.h */,
-				EC0656FC219A779500636786 /* CaseTableViewCell.m */,
 				EC065703219A779500636786 /* MyAlertView.h */,
 				EC0656FE219A779500636786 /* MyAlertView.m */,
 				EC0656F8219A779500636786 /* StartView */,
@@ -1309,7 +1304,6 @@
 				EC065834219A7AC600636786 /* RSKImageScrollView.m in Sources */,
 				EC0657FC219A7AC600636786 /* XTimer.m in Sources */,
 				EC0657EF219A7AC600636786 /* UIView+Frame.m in Sources */,
-				EC06572B219A779500636786 /* CaseTableViewCell.m in Sources */,
 				EC0658B8219AB11000636786 /* NSString+StringHook.m in Sources */,
 				EC065704219A779500636786 /* MediaPicker.m in Sources */,
 				EC0658B3219AB11000636786 /* NSObject+SwizzleHook.m in Sources */,
