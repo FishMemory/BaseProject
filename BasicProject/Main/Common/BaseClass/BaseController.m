@@ -2,13 +2,13 @@
 //  TestController.m
 //
 //
-//  Created by 宋亚清 on 16/5/16.
-//  Copyright © 2016年  . All rights reserved.
+//  Created by 宋亚清 on 19/9/16.
+//  Copyright © 2019年  . All rights reserved.
 //
 #import "BaseController.h"
 #import "APPHeader.h"
 #import "AppHelper.h"
-#import "UriParser.h" 
+#import "UriParser.h"
 
 #define FONT_PS(pt)(PX(pt/2.0f))
 
@@ -18,10 +18,9 @@
 @interface BaseController()
 {
     BOOL isVisible;
-    
     MBProgressHUD *progress;
 }
-@property (nonatomic, strong) IQKeyboardReturnKeyHandler    *returnKeyHandler;
+
 @end
 
 @implementation BaseController
@@ -42,12 +41,11 @@
 
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    self.returnKeyHandler = nil;
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = UIColorFromRGBA(0xffffff, 1);
     if ([self needNavigationBar]) {
         [self creartNavigationBarWithTitle:@""];
     }
@@ -60,9 +58,9 @@
 -(void)setLoginControllerType{
     self.view.backgroundColor = [UIColor whiteColor];
     self.myNavigationBar.backgroundColor =[UIColor whiteColor];
-    [self.myNavigationBar.backBtn setImage:[UIImage imageNamed:@"back_icon_black"] forState:UIControlStateNormal];
+    [self.myNavigationBar.backBtn setImage:[UIImage imageNamed:@"back_icon"] forState:UIControlStateNormal];
     self.myNavigationBar.line.hidden = YES;
-    self.myNavigationBar.navigationTitle.textColor = UIColorFromRGBA(0x595959, 1);
+    self.myNavigationBar.navigationTitle.textColor = UIColorFromRGBA(0xffffff, 1);
 }
 
 
@@ -82,6 +80,8 @@
     self.myNavigationBar = [[[NSBundle mainBundle]loadNibNamed:@"MyNavigationBar" owner:self options:nil]lastObject];
     self.myNavigationBar.navigationTitle.text = title;
     self.myNavigationBar.frame = FRAME(0, 0, self.view.width, kTopSafeHeight);
+    self.myNavigationBar.backgroundColor = UIColorFromRGBA(0x2575F9, 1);
+    self.myNavigationBar.navigationTitle.textColor = UIColorFromRGBA(0xffffff, 1);
     [self.view addSubview:self.myNavigationBar];
     [self.view bringSubviewToFront:self.myNavigationBar];
 }
@@ -98,6 +98,23 @@
 {
     __viewName = pageName;
 }
+///  设置 title 和右键 图片
+-(void)setTitle:(NSString *)title imageName:(NSString*)imageName action:(SEL)action{
+    [self setTitle:title];
+    UIButton *btn = [DLButton buttonType:UIButtonTypeCustom frame:FRAME(SCREEN_WIDTH-50, 0, 44, 44) tintColor:nil fontSize:0 image:imageName];
+    [btn addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    [self.myNavigationBar.centerView addSubview:btn];
+}
+
+///  设置 title 和右键 为文字
+-(void)setTitle:(NSString *)title rightTitle:(NSString*)rightTitle action:(SEL)action{
+    [self setTitle:title];
+    UIButton *btn = [DLButton buttonType:UIButtonTypeCustom frame:FRAME(SCREEN_WIDTH-50, 0, 44, 44) titleColor:[UIColor whiteColor] title:rightTitle cornerRadius:0];
+    [btn addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    btn.titleLabel.font = FONT(15);
+    [self.myNavigationBar.centerView addSubview:btn];
+}
+
 
 #pragma mark  --获取当前类名-->
 -(NSString *)getPageClassName{
@@ -110,40 +127,8 @@
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     APP.currentController = self;
-    // 注册Next和Done按键
-    self.returnKeyHandler = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
-    self.returnKeyHandler.lastTextFieldReturnKeyType = UIReturnKeyDone;
-    // 如果子类VC实现了TextViewDeletage，我们需要将代理传给returnKeyHandler，因为returnKeyHandler它也要处理代理事件
-    if([self conformsToProtocol: @protocol (UITextViewDelegate)] || [self conformsToProtocol: @protocol (UITextFieldDelegate)]){
-        id delegate = self;
-        self.returnKeyHandler.delegate = delegate;
-    }
 }
 
-
-/**
- 直接关闭当前VC所有的TextView或TextField ReturnKey事件关闭
- 注意：该方法只能在viewDidAppear里调用 ，并且需要先调用[super viewDidAppear:ani];
- 如果没有调用[super viewDidAppear:ani];，则默认不开ReturnKey事件
- */
-- (void)disableIQReturnKey
-{
-    self.returnKeyHandler.lastTextFieldReturnKeyType = UIReturnKeyDefault;
-    self.returnKeyHandler = nil;
-}
-
-/**
- 将指定的TextView或TextField的ReturnKey事件关闭
- 可用于：
- 1. 需要自己处理TextView或TextField的Delegate事件
- 2. 需要使用TextView或TextField默认的ReturnKey事件
- 注意：该方法只能在viewDidAppear里调用 ，并且需要先调用[super viewDidAppear:ani];
- 如果没有调用[super viewDidAppear:ani];，则默认不开ReturnKey事件
- */
--(void)disableIQReturnKeyHandlerForView:(UIView*)view
-{
-    [self.returnKeyHandler removeTextFieldView:view];
-}
 
 -(void)async_task:(CGFloat)delay exeBlk:(void (^_Nonnull)(void))exeBlk
 {
@@ -154,18 +139,13 @@
     self.myNavigationBar.navigationTitle.text = title;
 }
 
-- (UIViewController *)getCurrentVC
-{
+- (UIViewController *)getCurrentVC {
     UIViewController *result = nil;
-    
     UIWindow * window = [[UIApplication sharedApplication] keyWindow];
-    if (window.windowLevel != UIWindowLevelNormal)
-    {
+    if (window.windowLevel != UIWindowLevelNormal)  {
         NSArray *windows = [[UIApplication sharedApplication] windows];
-        for(UIWindow * tmpWin in windows)
-        {
-            if (tmpWin.windowLevel == UIWindowLevelNormal)
-            {
+        for(UIWindow * tmpWin in windows) {
+            if (tmpWin.windowLevel == UIWindowLevelNormal) {
                 window = tmpWin;
                 break;
             }
@@ -173,44 +153,34 @@
     }
     
     NSArray *viewsArray = [window subviews];
-    if([viewsArray count] > 0)
-    {
+    if([viewsArray count] > 0) {
         UIView *frontView = [viewsArray objectAtIndex:0];
-        
         id nextResponder = [frontView nextResponder];
-        
-        if([nextResponder isKindOfClass:[UIViewController class]])
-        {
+        if([nextResponder isKindOfClass:[UIViewController class]])  {
             result = nextResponder;
-        }
-        else
-        {
+        } else {
             result = window.rootViewController;
         }
     }
     return result;
 }
 
-- (UIViewController *)getPresentedViewController
-{
+- (UIViewController *)getPresentedViewController{
     UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
     UIViewController *topVC = appRootVC;
     if (topVC.presentedViewController) {
         topVC = topVC.presentedViewController;
     }
-    
     return topVC;
 }
 
--(BOOL)isVisible
-{
+-(BOOL)isVisible {
     return (self.isViewLoaded && self.view.window);
 }
 
 
 // 当App从后台变成前台时，消息处理
--(void)defaultAppStatusChange:(NSNotification*)notify
-{
+-(void)defaultAppStatusChange:(NSNotification*)notify{
     if(!APP.isInBackground){
         if(_beActiveBlock){
             _beActiveBlock();
@@ -237,6 +207,7 @@
 -(void)setNavBarBkgchangeCol:(NSArray*)colors{
     [self.myNavigationBar setViewLayerThemeColors:CGSizeMake(SCREEN_WIDTH, self.myNavigationBar.height)];
     [self.myNavigationBar bringSubviewToFront: self.myNavigationBar.centerView];
+    [self setNaviBarBkg:COL_THEME];
     //    UIImage * naviBkgImg = [UIImage ImageWithColorsSize:CGSizeMake(SCREEN_WIDTH, kTopSafeHeight)];
     //    [[[self navigationController] myNavigationBar] setBackgroundImage:naviBkgImg forBarMetrics:UIBarMetricsDefault];
 }
@@ -288,33 +259,8 @@
         [button addTarget:self action:searchAction forControlEvents:UIControlEventTouchUpInside];
         [_naview addSubview:button];
     }
-    
-    
-    //    [UIImage imageWithColor:<#(UIColor *)#> size:<#(CGSize)#>]
-    //    UIButton *right = [UIButton  buttonWithType:UIButtonTypeCustom];
-    //    UIBarButtonItem *rightbar = [[UIBarButtonItem alloc]initWithCustomView:right];
-    //    rightbar.accessibilityElementsHidden = YES;
-    //    self.navigationItem.rightBarButtonItem = rightbar;
-    //
-    //    // 默认左侧不显示
-    //    UIButton *leftButton = [UIButton  buttonWithType:UIButtonTypeCustom];
-    //    UIBarButtonItem *leftbar = [[UIBarButtonItem alloc]initWithCustomView:leftButton];
-    //    leftbar.accessibilityElementsHidden = YES;
-    //    self.navigationItem.leftBarButtonItem = leftbar;
 }
 
-//-(void)initNavBarSearch:(NSString*)palceH {
-//    [self setNaviItem:@""];
-//    self.myNavigationBar.line.hidden = NO;
-//    [self initNaviItemWithSearchBarPlace:palceH  action:@selector(searchInputAction:)];
-//    self.naview.width = SCREEN_WIDTH -20 -80;
-//    UIButton *right = [UIButton  buttonWithType:UIButtonTypeCustom];
-//    right.titleLabel.font = FONT(PX(36));
-//    right.frame = FRAME(SCREEN_WIDTH - 80, 0, 80, 44);
-//    [right setTitle:@"Cancel" forState:UIControlStateNormal];
-//    [right setTitleColor:rgb(59, 59, 59) forState:UIControlStateNormal];
-//    [right addTarget:self action:@selector(cancelAct) forControlEvents:UIControlEventTouchUpInside];
-//}
 
 -(BOOL)showSearchTouchBtn{
     return NO;

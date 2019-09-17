@@ -92,7 +92,7 @@
     [alertview addSubview:textField];
     UIButton *okBtn = [DLButton buttonType:UIButtonTypeCustom frame:FRAME((alertview.width-PX(316))/2.,alertview.height-PX(126),PX(316), PX(76)) titleColor:COL_NAVI target:self Selector:@selector(receiveAction) selectorState:UIControlEventTouchUpInside title:@"确认" cornerRadius:PX(8)];
     okBtn.titleLabel.font = FONT_TITLE;
-    okBtn.backgroundColor = COL_THEME_BLUE;
+    okBtn.backgroundColor = COL_THEME;
     [alertview addSubview:okBtn];
     
     textField.finishedBlock = ^(NSString *payCodeString) {
@@ -293,13 +293,13 @@
         cancelBlock(action);
     }];
    
-        [cancelAction setValue:COL_THEME_BLUE forKey:@"_titleTextColor"];
+        [cancelAction setValue:COL_THEME forKey:@"_titleTextColor"];
     UIAlertAction *otherAction = [UIAlertAction actionWithTitle:suretitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
         okblock(action);
     }];
     
-    [otherAction setValue:COL_THEME_BLUE forKey:@"_titleTextColor"];
+    [otherAction setValue:COL_THEME forKey:@"_titleTextColor"];
     
     [alertController addAction:cancelAction];
     [alertController addAction:otherAction];

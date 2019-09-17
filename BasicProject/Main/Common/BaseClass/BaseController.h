@@ -2,8 +2,8 @@
 //  TestController.h
 //
 //
-//  Created by 宋亚清 on 16/5/16.
-//  Copyright © 2016年  . All rights reserved.
+//  Created by 宋亚清 on 19/9/16.
+//  Copyright © 2019年  . All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -87,6 +87,7 @@ typedef void (^BecomeActiveBlock)(void);
 -(void)setNaviBarBkg:(nullable UIColor *)color;
 
 
+
 /// 初始化带搜索的导航栏
 -(void)initNaviItemWithSearchBarPlace:(NSString*)placeh action:(nullable SEL)searchAction;
 
@@ -103,19 +104,13 @@ typedef void (^BecomeActiveBlock)(void);
 -(void)showConfirmText:(nullable NSString*) text;
 - (void)setProgressOffsetY:(CGFloat)y;
 - (BOOL)checkLoginStatus;
-// 判断自己是否是四个TabBar的根VC
+// 判断自己是否是TabBar的根VC
 -(BOOL)isTabBarController;
-
-// 当前VC中的ReturnKey事件不处理
-- (void)disableIQReturnKey;
-
-// 使指定的View不处理ReturnKey
--(void)disableIQReturnKeyHandlerForView:(nullable UIView*)view;
 
 
 // 设置渐变主题
 -(void)setNavBarBkgchangeCol:(NSArray*)colors;
-
+/// 设置 navgationtitle
 -(void)setNavBarTitle:(NSString*)title;
 /// 添加mjheader
 -(MJRefreshNormalHeader*)initiMJheader:(SEL)action;
@@ -127,7 +122,13 @@ typedef void (^BecomeActiveBlock)(void);
 -(void)backLastPageWith:(NSString*)name;
 
 - (void)backAction;
+///  设置 title 和右键 图片
+-(void)setTitle:(NSString *)title imageName:(NSString*)imageName action:(SEL)action;
+///  设置 title 和右键 为文字
+-(void)setTitle:(NSString *)title rightTitle:(NSString*)rightTitle action:(SEL)action;
+
 @end
 
 
 #endif /* TestController_h */
+

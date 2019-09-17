@@ -56,7 +56,7 @@
     
     self.startPage.pageIndicatorTintColor = COL_GRAY_LINE;
     
-    self.startPage.currentPageIndicatorTintColor = COL_THEME_BLUE;
+    self.startPage.currentPageIndicatorTintColor = COL_THEME;
     
 //    [self addSubview:_startPage];
     

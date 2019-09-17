@@ -20,7 +20,7 @@
 @implementation WebViewController
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    //[self setNaviBarBkg:COL_THEME_BLUE];
+    //[self setNaviBarBkg:COL_THEME];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -78,7 +78,7 @@
 //    if(_shareModel.share == 1){
 //        UIButton *right = [DLButton buttonType:UIButtonTypeSystem frame:FRAME(0, 0, 30, 30) titleColor:nil backGroundImage:nil target:self Selector:@selector(webShareUrl) selectorState:UIControlEventTouchUpInside title:@"" cornerRadius:0];
 //        [right setImage:ImageNamed(@"share") forState:UIControlStateNormal];
-//        [right setTintColor:COL_THEME_BLUE];
+//        [right setTintColor:COL_THEME];
 //        UIBarButtonItem *rightbar = [[UIBarButtonItem alloc]initWithCustomView:right];
 //        right.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
 //        self.navigationItem.rightBarButtonItem = rightbar;
@@ -116,7 +116,7 @@
         self.navigationController.navigationBar.translucent = YES;
 //        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:CLEAR_COLOR size:CGSizeMake(SCREEN_WIDTH, 64)] forBarMetrics:UIBarMetricsDefault];
     }
-    [self goBackPage];
+//    [self goBackPage];
 }
 
 -(void)webViewDidStartLoad:(UIWebView *)webView{

@@ -39,8 +39,6 @@
 		EC065728219A779500636786 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0656F7219A779500636786 /* BaseTableViewCell.m */; };
 		EC065729219A779500636786 /* StartView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0656F9219A779500636786 /* StartView.m */; };
 		EC06572D219A779500636786 /* MyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0656FE219A779500636786 /* MyAlertView.m */; };
-		EC0657EC219A7AC600636786 /* JAScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC065730219A7AC500636786 /* JAScrollView.m */; };
-		EC0657ED219A7AC600636786 /* LMJScrollTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC065733219A7AC500636786 /* LMJScrollTextView.m */; };
 		EC0657EE219A7AC600636786 /* WYWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC065737219A7AC500636786 /* WYWebController.m */; };
 		EC0657EF219A7AC600636786 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = EC065738219A7AC500636786 /* UIView+Frame.m */; };
 		EC0657F0219A7AC600636786 /* NSTimer+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = EC06573B219A7AC500636786 /* NSTimer+addition.m */; };
@@ -48,29 +46,14 @@
 		EC0657FA219A7AC600636786 /* NSDictionary+safeEX.m in Sources */ = {isa = PBXBuildFile; fileRef = EC065753219A7AC500636786 /* NSDictionary+safeEX.m */; };
 		EC0657FB219A7AC600636786 /* NSArray+safeEX.m in Sources */ = {isa = PBXBuildFile; fileRef = EC065754219A7AC500636786 /* NSArray+safeEX.m */; };
 		EC0657FC219A7AC600636786 /* XTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = EC065756219A7AC500636786 /* XTimer.m */; };
-		EC0657FD219A7AC600636786 /* JJCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EC065759219A7AC500636786 /* JJCTextField.m */; };
-		EC0657FE219A7AC600636786 /* JJCPayCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EC06575A219A7AC500636786 /* JJCPayCodeTextField.m */; };
-		EC0657FF219A7AC600636786 /* JJCPayCodeTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC06575E219A7AC500636786 /* JJCPayCodeTextFieldCell.m */; };
-		EC065829219A7AC600636786 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0657B9219A7AC600636786 /* Parse.framework */; };
-		EC06582A219A7AC600636786 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0657BA219A7AC600636786 /* Bolts.framework */; };
 		EC06582B219A7AC600636786 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657BC219A7AC600636786 /* SMPageControl.m */; };
 		EC06582C219A7AC600636786 /* MyPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657BF219A7AC600636786 /* MyPageControl.m */; };
-		EC06582D219A7AC600636786 /* CGGeometry+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657C1219A7AC600636786 /* CGGeometry+RSKImageCropper.m */; };
-		EC06582E219A7AC600636786 /* RSKInternalUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657C2219A7AC600636786 /* RSKInternalUtility.m */; };
-		EC06582F219A7AC600636786 /* RSKTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657C3219A7AC600636786 /* RSKTouchView.m */; };
-		EC065830219A7AC600636786 /* UIApplication+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657C5219A7AC600636786 /* UIApplication+RSKImageCropper.m */; };
-		EC065831219A7AC600636786 /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657C6219A7AC600636786 /* RSKImageCropViewController.m */; };
-		EC065832219A7AC600636786 /* UIImage+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657C7219A7AC600636786 /* UIImage+RSKImageCropper.m */; };
-		EC065833219A7AC600636786 /* RSKImageCropperStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EC0657CC219A7AC600636786 /* RSKImageCropperStrings.bundle */; };
-		EC065834219A7AC600636786 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657D2219A7AC600636786 /* RSKImageScrollView.m */; };
 		EC065835219A7AC600636786 /* UIView+JFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657D7219A7AC600636786 /* UIView+JFExtension.m */; };
 		EC065836219A7AC600636786 /* STAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657DA219A7AC600636786 /* STAlertView.m */; };
 		EC065837219A7AC600636786 /* JFTagListView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657DB219A7AC600636786 /* JFTagListView.m */; };
 		EC065838219A7AC600636786 /* btn_removeTag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC0657DD219A7AC600636786 /* btn_removeTag@2x.png */; };
 		EC065839219A7AC600636786 /* HYPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657DF219A7AC600636786 /* HYPageView.m */; };
 		EC06583B219A7AC600636786 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657E5219A7AC600636786 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		EC06583C219A7AC600636786 /* HSSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657E8219A7AC600636786 /* HSSessionModel.m */; };
-		EC06583D219A7AC600636786 /* HSDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657EB219A7AC600636786 /* HSDownloadManager.m */; };
 		EC0658AB219AB11000636786 /* NSDictionary+DictionaryHook.m in Sources */ = {isa = PBXBuildFile; fileRef = EC065881219AB11000636786 /* NSDictionary+DictionaryHook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EC0658AC219AB11000636786 /* NSMutableArray+MutableArrayHook.m in Sources */ = {isa = PBXBuildFile; fileRef = EC065882219AB11000636786 /* NSMutableArray+MutableArrayHook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EC0658AD219AB11000636786 /* NSObject+ZombieHook.m in Sources */ = {isa = PBXBuildFile; fileRef = EC065883219AB11000636786 /* NSObject+ZombieHook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -94,7 +77,6 @@
 		ECD7E258231A219C004AEDC9 /* HDPopMenuHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD7E255231A219C004AEDC9 /* HDPopMenuHelper.m */; };
 		ECEA32402313D61A006F4E73 /* MyNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECEA323B2313D61A006F4E73 /* MyNavigationBar.xib */; };
 		ECEA32412313D61A006F4E73 /* MyNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA323C2313D61A006F4E73 /* MyNavigationBar.m */; };
-		ECEA32422313D61A006F4E73 /* MyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA323F2313D61A006F4E73 /* MyAlertView.m */; };
 		ECEA330D2313D854006F4E73 /* UIView+DLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA32BE2313D854006F4E73 /* UIView+DLExtension.m */; };
 		ECEA330E2313D854006F4E73 /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA32C12313D854006F4E73 /* NSString+Hash.m */; };
 		ECEA330F2313D854006F4E73 /* NSString+SizeLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA32C32313D854006F4E73 /* NSString+SizeLayout.m */; };
@@ -137,9 +119,7 @@
 
 /* Begin PBXFileReference section */
 		533044887728D977C0240E76 /* Pods_BasicProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BasicProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		84C568E591C86DE0CC87BBB3 /* Pods-LVLBS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LVLBS.release.xcconfig"; path = "Pods/Target Support Files/Pods-LVLBS/Pods-LVLBS.release.xcconfig"; sourceTree = "<group>"; };
 		A768C6E532F7A8AD88246E05 /* Pods-BasicProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BasicProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-BasicProject/Pods-BasicProject.release.xcconfig"; sourceTree = "<group>"; };
-		B11E5C5A17BF1AB49837F831 /* Pods-LVLBS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LVLBS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LVLBS/Pods-LVLBS.debug.xcconfig"; sourceTree = "<group>"; };
 		E9A02D519A6679F97BFA3383 /* Pods-BasicProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BasicProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BasicProject/Pods-BasicProject.debug.xcconfig"; sourceTree = "<group>"; };
 		EC065667219A6FFF00636786 /* BasicProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasicProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC06566A219A6FFF00636786 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -209,10 +189,6 @@
 		EC0656FE219A779500636786 /* MyAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAlertView.m; sourceTree = "<group>"; };
 		EC065700219A779500636786 /* BaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
 		EC065703219A779500636786 /* MyAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlertView.h; sourceTree = "<group>"; };
-		EC065730219A7AC500636786 /* JAScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAScrollView.m; sourceTree = "<group>"; };
-		EC065731219A7AC500636786 /* JAScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAScrollView.h; sourceTree = "<group>"; };
-		EC065733219A7AC500636786 /* LMJScrollTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMJScrollTextView.m; sourceTree = "<group>"; };
-		EC065734219A7AC500636786 /* LMJScrollTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMJScrollTextView.h; sourceTree = "<group>"; };
 		EC065736219A7AC500636786 /* NSTimer+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+addition.h"; sourceTree = "<group>"; };
 		EC065737219A7AC500636786 /* WYWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYWebController.m; sourceTree = "<group>"; };
 		EC065738219A7AC500636786 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
@@ -227,36 +203,10 @@
 		EC065754219A7AC500636786 /* NSArray+safeEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+safeEX.m"; sourceTree = "<group>"; };
 		EC065756219A7AC500636786 /* XTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTimer.m; sourceTree = "<group>"; };
 		EC065757219A7AC500636786 /* XTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTimer.h; sourceTree = "<group>"; };
-		EC065759219A7AC500636786 /* JJCTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJCTextField.m; sourceTree = "<group>"; };
-		EC06575A219A7AC500636786 /* JJCPayCodeTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJCPayCodeTextField.m; sourceTree = "<group>"; };
-		EC06575B219A7AC500636786 /* JJCPayCodeTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJCPayCodeTextFieldCell.h; sourceTree = "<group>"; };
-		EC06575C219A7AC500636786 /* JJCTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJCTextField.h; sourceTree = "<group>"; };
-		EC06575D219A7AC500636786 /* JJCPayCodeTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJCPayCodeTextField.h; sourceTree = "<group>"; };
-		EC06575E219A7AC500636786 /* JJCPayCodeTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJCPayCodeTextFieldCell.m; sourceTree = "<group>"; };
-		EC0657B9219A7AC600636786 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		EC0657BA219A7AC600636786 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		EC0657BC219A7AC600636786 /* SMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPageControl.m; sourceTree = "<group>"; };
 		EC0657BD219A7AC600636786 /* MyPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPageControl.h; sourceTree = "<group>"; };
 		EC0657BE219A7AC600636786 /* SMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPageControl.h; sourceTree = "<group>"; };
 		EC0657BF219A7AC600636786 /* MyPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPageControl.m; sourceTree = "<group>"; };
-		EC0657C1219A7AC600636786 /* CGGeometry+RSKImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CGGeometry+RSKImageCropper.m"; sourceTree = "<group>"; };
-		EC0657C2219A7AC600636786 /* RSKInternalUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKInternalUtility.m; sourceTree = "<group>"; };
-		EC0657C3219A7AC600636786 /* RSKTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKTouchView.m; sourceTree = "<group>"; };
-		EC0657C4219A7AC600636786 /* RSKImageCropViewController+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RSKImageCropViewController+Protected.h"; sourceTree = "<group>"; };
-		EC0657C5219A7AC600636786 /* UIApplication+RSKImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+RSKImageCropper.m"; sourceTree = "<group>"; };
-		EC0657C6219A7AC600636786 /* RSKImageCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKImageCropViewController.m; sourceTree = "<group>"; };
-		EC0657C7219A7AC600636786 /* UIImage+RSKImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RSKImageCropper.m"; sourceTree = "<group>"; };
-		EC0657C8219A7AC600636786 /* RSKImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageScrollView.h; sourceTree = "<group>"; };
-		EC0657C9219A7AC600636786 /* RSKTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKTouchView.h; sourceTree = "<group>"; };
-		EC0657CA219A7AC600636786 /* RSKInternalUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKInternalUtility.h; sourceTree = "<group>"; };
-		EC0657CB219A7AC600636786 /* CGGeometry+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+RSKImageCropper.h"; sourceTree = "<group>"; };
-		EC0657CC219A7AC600636786 /* RSKImageCropperStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RSKImageCropperStrings.bundle; sourceTree = "<group>"; };
-		EC0657CD219A7AC600636786 /* UIImage+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RSKImageCropper.h"; sourceTree = "<group>"; };
-		EC0657CE219A7AC600636786 /* RSKImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropViewController.h; sourceTree = "<group>"; };
-		EC0657CF219A7AC600636786 /* UIApplication+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+RSKImageCropper.h"; sourceTree = "<group>"; };
-		EC0657D0219A7AC600636786 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		EC0657D1219A7AC600636786 /* RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropper.h; sourceTree = "<group>"; };
-		EC0657D2219A7AC600636786 /* RSKImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKImageScrollView.m; sourceTree = "<group>"; };
 		EC0657D4219A7AC600636786 /* JFTagListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTagListView.h; sourceTree = "<group>"; };
 		EC0657D6219A7AC600636786 /* UIView+JFExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JFExtension.h"; sourceTree = "<group>"; };
 		EC0657D7219A7AC600636786 /* UIView+JFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JFExtension.m"; sourceTree = "<group>"; };
@@ -268,10 +218,6 @@
 		EC0657E0219A7AC600636786 /* HYPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPageView.h; sourceTree = "<group>"; };
 		EC0657E5219A7AC600636786 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		EC0657E6219A7AC600636786 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		EC0657E8219A7AC600636786 /* HSSessionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSSessionModel.m; sourceTree = "<group>"; };
-		EC0657E9219A7AC600636786 /* HSDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSDownloadManager.h; sourceTree = "<group>"; };
-		EC0657EA219A7AC600636786 /* HSSessionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSSessionModel.h; sourceTree = "<group>"; };
-		EC0657EB219A7AC600636786 /* HSDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSDownloadManager.m; sourceTree = "<group>"; };
 		EC065881219AB11000636786 /* NSDictionary+DictionaryHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DictionaryHook.m"; sourceTree = "<group>"; };
 		EC065882219AB11000636786 /* NSMutableArray+MutableArrayHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+MutableArrayHook.m"; sourceTree = "<group>"; };
 		EC065883219AB11000636786 /* NSObject+ZombieHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ZombieHook.m"; sourceTree = "<group>"; };
@@ -316,9 +262,7 @@
 		ECD7E256231A219C004AEDC9 /* HDPopMenuHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDPopMenuHelper.h; sourceTree = "<group>"; };
 		ECEA323B2313D61A006F4E73 /* MyNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNavigationBar.xib; sourceTree = "<group>"; };
 		ECEA323C2313D61A006F4E73 /* MyNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNavigationBar.m; sourceTree = "<group>"; };
-		ECEA323D2313D61A006F4E73 /* MyAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlertView.h; sourceTree = "<group>"; };
 		ECEA323E2313D61A006F4E73 /* MyNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNavigationBar.h; sourceTree = "<group>"; };
-		ECEA323F2313D61A006F4E73 /* MyAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAlertView.m; sourceTree = "<group>"; };
 		ECEA32BC2313D854006F4E73 /* AutoArrange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoArrange.h; sourceTree = "<group>"; };
 		ECEA32BD2313D854006F4E73 /* UISearchBar+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISearchBar+Configuration.h"; sourceTree = "<group>"; };
 		ECEA32BE2313D854006F4E73 /* UIView+DLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+DLExtension.m"; sourceTree = "<group>"; };
@@ -403,8 +347,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC065829219A7AC600636786 /* Parse.framework in Frameworks */,
-				EC06582A219A7AC600636786 /* Bolts.framework in Frameworks */,
 				9CC265700BC9A7E99F417B81 /* Pods_BasicProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,8 +357,6 @@
 		444AE69E9904CB2171F80D03 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B11E5C5A17BF1AB49837F831 /* Pods-LVLBS.debug.xcconfig */,
-				84C568E591C86DE0CC87BBB3 /* Pods-LVLBS.release.xcconfig */,
 				E9A02D519A6679F97BFA3383 /* Pods-BasicProject.debug.xcconfig */,
 				A768C6E532F7A8AD88246E05 /* Pods-BasicProject.release.xcconfig */,
 			);
@@ -610,8 +550,6 @@
 		EC0656DB219A779500636786 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				ECEA323D2313D61A006F4E73 /* MyAlertView.h */,
-				ECEA323F2313D61A006F4E73 /* MyAlertView.m */,
 				ECEA323E2313D61A006F4E73 /* MyNavigationBar.h */,
 				ECEA323C2313D61A006F4E73 /* MyNavigationBar.m */,
 				ECEA323B2313D61A006F4E73 /* MyNavigationBar.xib */,
@@ -678,40 +616,16 @@
 			children = (
 				EC06575F219A7AC500636786 /* FTPopOverMenu */,
 				ECEA32BB2313D854006F4E73 /* GlobalUtil */,
-				EC0657E7219A7AC600636786 /* HSDownloadManager */,
 				EC0657DE219A7AC600636786 /* HYPageView */,
-				EC06572F219A7AC500636786 /* JAScrollView */,
 				EC0657D3219A7AC600636786 /* JFTagListClass */,
-				EC065758219A7AC500636786 /* JJCPayCodeTextField */,
 				EC0657E4219A7AC600636786 /* JSONKit */,
-				EC065732219A7AC500636786 /* LMJScrollTextView */,
 				EC0657BB219A7AC600636786 /* MyPageControl */,
 				EC065750219A7AC500636786 /* NSArray_Dictionary_Exception */,
-				EC0657B8219A7AC600636786 /* Parse */,
-				EC0657C0219A7AC600636786 /* RSKImageCropper */,
 				EC06587F219AB11000636786 /* Source */,
 				EC065735219A7AC500636786 /* Web */,
 				EC065755219A7AC500636786 /* XTimer */,
 			);
 			path = Vendor;
-			sourceTree = "<group>";
-		};
-		EC06572F219A7AC500636786 /* JAScrollView */ = {
-			isa = PBXGroup;
-			children = (
-				EC065730219A7AC500636786 /* JAScrollView.m */,
-				EC065731219A7AC500636786 /* JAScrollView.h */,
-			);
-			path = JAScrollView;
-			sourceTree = "<group>";
-		};
-		EC065732219A7AC500636786 /* LMJScrollTextView */ = {
-			isa = PBXGroup;
-			children = (
-				EC065734219A7AC500636786 /* LMJScrollTextView.h */,
-				EC065733219A7AC500636786 /* LMJScrollTextView.m */,
-			);
-			path = LMJScrollTextView;
 			sourceTree = "<group>";
 		};
 		EC065735219A7AC500636786 /* Web */ = {
@@ -749,19 +663,6 @@
 			path = XTimer;
 			sourceTree = "<group>";
 		};
-		EC065758219A7AC500636786 /* JJCPayCodeTextField */ = {
-			isa = PBXGroup;
-			children = (
-				EC06575D219A7AC500636786 /* JJCPayCodeTextField.h */,
-				EC06575A219A7AC500636786 /* JJCPayCodeTextField.m */,
-				EC06575B219A7AC500636786 /* JJCPayCodeTextFieldCell.h */,
-				EC06575E219A7AC500636786 /* JJCPayCodeTextFieldCell.m */,
-				EC06575C219A7AC500636786 /* JJCTextField.h */,
-				EC065759219A7AC500636786 /* JJCTextField.m */,
-			);
-			path = JJCPayCodeTextField;
-			sourceTree = "<group>";
-		};
 		EC06575F219A7AC500636786 /* FTPopOverMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -773,15 +674,6 @@
 			path = FTPopOverMenu;
 			sourceTree = "<group>";
 		};
-		EC0657B8219A7AC600636786 /* Parse */ = {
-			isa = PBXGroup;
-			children = (
-				EC0657B9219A7AC600636786 /* Parse.framework */,
-				EC0657BA219A7AC600636786 /* Bolts.framework */,
-			);
-			path = Parse;
-			sourceTree = "<group>";
-		};
 		EC0657BB219A7AC600636786 /* MyPageControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -791,31 +683,6 @@
 				EC0657BF219A7AC600636786 /* MyPageControl.m */,
 			);
 			path = MyPageControl;
-			sourceTree = "<group>";
-		};
-		EC0657C0219A7AC600636786 /* RSKImageCropper */ = {
-			isa = PBXGroup;
-			children = (
-				EC0657C1219A7AC600636786 /* CGGeometry+RSKImageCropper.m */,
-				EC0657C2219A7AC600636786 /* RSKInternalUtility.m */,
-				EC0657C3219A7AC600636786 /* RSKTouchView.m */,
-				EC0657C4219A7AC600636786 /* RSKImageCropViewController+Protected.h */,
-				EC0657C5219A7AC600636786 /* UIApplication+RSKImageCropper.m */,
-				EC0657C6219A7AC600636786 /* RSKImageCropViewController.m */,
-				EC0657C7219A7AC600636786 /* UIImage+RSKImageCropper.m */,
-				EC0657C8219A7AC600636786 /* RSKImageScrollView.h */,
-				EC0657C9219A7AC600636786 /* RSKTouchView.h */,
-				EC0657CA219A7AC600636786 /* RSKInternalUtility.h */,
-				EC0657CB219A7AC600636786 /* CGGeometry+RSKImageCropper.h */,
-				EC0657CC219A7AC600636786 /* RSKImageCropperStrings.bundle */,
-				EC0657CD219A7AC600636786 /* UIImage+RSKImageCropper.h */,
-				EC0657CE219A7AC600636786 /* RSKImageCropViewController.h */,
-				EC0657CF219A7AC600636786 /* UIApplication+RSKImageCropper.h */,
-				EC0657D0219A7AC600636786 /* module.modulemap */,
-				EC0657D1219A7AC600636786 /* RSKImageCropper.h */,
-				EC0657D2219A7AC600636786 /* RSKImageScrollView.m */,
-			);
-			path = RSKImageCropper;
 			sourceTree = "<group>";
 		};
 		EC0657D3219A7AC600636786 /* JFTagListClass */ = {
@@ -872,17 +739,6 @@
 				EC0657E6219A7AC600636786 /* JSONKit.h */,
 			);
 			path = JSONKit;
-			sourceTree = "<group>";
-		};
-		EC0657E7219A7AC600636786 /* HSDownloadManager */ = {
-			isa = PBXGroup;
-			children = (
-				EC0657E8219A7AC600636786 /* HSSessionModel.m */,
-				EC0657E9219A7AC600636786 /* HSDownloadManager.h */,
-				EC0657EA219A7AC600636786 /* HSSessionModel.h */,
-				EC0657EB219A7AC600636786 /* HSDownloadManager.m */,
-			);
-			path = HSDownloadManager;
 			sourceTree = "<group>";
 		};
 		EC06587F219AB11000636786 /* Source */ = {
@@ -1153,7 +1009,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC065833219A7AC600636786 /* RSKImageCropperStrings.bundle in Resources */,
 				ECEA32402313D61A006F4E73 /* MyNavigationBar.xib in Resources */,
 				EC065677219A700300636786 /* LaunchScreen.storyboard in Resources */,
 				EC065838219A7AC600636786 /* btn_removeTag@2x.png in Resources */,
@@ -1207,13 +1062,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC06570A219A779500636786 /* UploadFile.m in Sources */,
-				EC06582D219A7AC600636786 /* CGGeometry+RSKImageCropper.m in Sources */,
 				EC0658BD219AB11000636786 /* JJExceptionProxy.m in Sources */,
 				ECEA33102313D854006F4E73 /* UIButton+countDown.m in Sources */,
 				EC06570D219A779500636786 /* AES128.m in Sources */,
 				EC065706219A779500636786 /* WebViewController.m in Sources */,
 				EC065708219A779500636786 /* BaseController.m in Sources */,
-				EC0657FD219A7AC600636786 /* JJCTextField.m in Sources */,
 				EC0658B4219AB11000636786 /* NSMutableAttributedString+MutableAttributedStringHook.m in Sources */,
 				ECEA33252313D854006F4E73 /* AutoArrange.m in Sources */,
 				ECEA33152313D854006F4E73 /* CAAnimation+WAnimation.m in Sources */,
@@ -1232,14 +1085,11 @@
 				ECEA332E2313D854006F4E73 /* UIStoryboard+Category.m in Sources */,
 				ECEA33192313D854006F4E73 /* DLButton.m in Sources */,
 				EC0657FB219A7AC600636786 /* NSArray+safeEX.m in Sources */,
-				ECEA32422313D61A006F4E73 /* MyAlertView.m in Sources */,
 				ECEA331A2313D854006F4E73 /* UILabel+attributeTextAction.m in Sources */,
 				EC065836219A7AC600636786 /* STAlertView.m in Sources */,
 				EC06566C219A6FFF00636786 /* AppDelegate.m in Sources */,
-				EC06582F219A7AC600636786 /* RSKTouchView.m in Sources */,
 				ECEA332C2313D854006F4E73 /* UIButton+touch.m in Sources */,
 				ECEA331C2313D854006F4E73 /* NSObject+Notification.m in Sources */,
-				EC06583D219A7AC600636786 /* HSDownloadManager.m in Sources */,
 				EC0658AD219AB11000636786 /* NSObject+ZombieHook.m in Sources */,
 				ECEA330E2313D854006F4E73 /* NSString+Hash.m in Sources */,
 				EC06571A219A779500636786 /* NetworkUtils.m in Sources */,
@@ -1259,9 +1109,6 @@
 				ECEA330D2313D854006F4E73 /* UIView+DLExtension.m in Sources */,
 				EC0657FA219A7AC600636786 /* NSDictionary+safeEX.m in Sources */,
 				ECEA33112313D854006F4E73 /* DLAlert.m in Sources */,
-				EC065830219A7AC600636786 /* UIApplication+RSKImageCropper.m in Sources */,
-				EC0657ED219A7AC600636786 /* LMJScrollTextView.m in Sources */,
-				EC065834219A7AC600636786 /* RSKImageScrollView.m in Sources */,
 				ECEA33172313D854006F4E73 /* UIView+syCategory.m in Sources */,
 				ECEA32412313D61A006F4E73 /* MyNavigationBar.m in Sources */,
 				EC0657FC219A7AC600636786 /* XTimer.m in Sources */,
@@ -1277,16 +1124,12 @@
 				EC06582C219A7AC600636786 /* MyPageControl.m in Sources */,
 				EC0658AB219AB11000636786 /* NSDictionary+DictionaryHook.m in Sources */,
 				ECEA33242313D854006F4E73 /* UISearchBar+Configuration.m in Sources */,
-				EC06582E219A7AC600636786 /* RSKInternalUtility.m in Sources */,
 				EC0658BC219AB11000636786 /* JJException.m in Sources */,
 				ECEA33282313D854006F4E73 /* UIFont+WDCustomLoader.m in Sources */,
 				ECEA331B2313D854006F4E73 /* UINavigationBar+Awesome.m in Sources */,
 				EC065837219A7AC600636786 /* JFTagListView.m in Sources */,
-				EC06583C219A7AC600636786 /* HSSessionModel.m in Sources */,
 				EC065724219A779500636786 /* ProgressHUD.m in Sources */,
-				EC0657EC219A7AC600636786 /* JAScrollView.m in Sources */,
 				ECEA33182313D854006F4E73 /* UIButton+BtSelected.m in Sources */,
-				EC0657FF219A7AC600636786 /* JJCPayCodeTextFieldCell.m in Sources */,
 				EC0657EE219A7AC600636786 /* WYWebController.m in Sources */,
 				EC06570C219A779500636786 /* UriParser.m in Sources */,
 				ECEA33272313D854006F4E73 /* NSDate+Extend.m in Sources */,
@@ -1296,7 +1139,6 @@
 				EC0657F1219A7AC600636786 /* WYWebProgressLayer.m in Sources */,
 				EC065709219A779500636786 /* BaseUINavigationController.m in Sources */,
 				EC06571C219A779500636786 /* IAPService.m in Sources */,
-				EC0657FE219A7AC600636786 /* JJCPayCodeTextField.m in Sources */,
 				EC0658B2219AB11000636786 /* NSObject+DeallocBlock.m in Sources */,
 				EC0658B0219AB11000636786 /* NSObject+UnrecognizedSelectorHook.m in Sources */,
 				EC0658AF219AB11000636786 /* NSArray+ArrayHook.m in Sources */,
@@ -1308,7 +1150,6 @@
 				EC0658BB219AB11000636786 /* NSNotificationCenter+ClearNotification.m in Sources */,
 				EC065707219A779500636786 /* TabBarControllerViewController.m in Sources */,
 				EC065695219A758B00636786 /* AppHelper.m in Sources */,
-				EC065832219A7AC600636786 /* UIImage+RSKImageCropper.m in Sources */,
 				ECEA331E2313D854006F4E73 /* DLTouchID.m in Sources */,
 				EC065715219A779500636786 /* CheckNumber.m in Sources */,
 				ECD7E257231A219C004AEDC9 /* FTPopOverMenu.m in Sources */,
@@ -1316,7 +1157,6 @@
 				EC065839219A7AC600636786 /* HYPageView.m in Sources */,
 				EC06571D219A779500636786 /* EncryptClass.m in Sources */,
 				ECEA330F2313D854006F4E73 /* NSString+SizeLayout.m in Sources */,
-				EC065831219A7AC600636786 /* RSKImageCropViewController.m in Sources */,
 				ECEA331D2313D854006F4E73 /* UIColor+Extend.m in Sources */,
 				EC065722219A779500636786 /* titleView.m in Sources */,
 				ECEA33292313D854006F4E73 /* DLPageControl.m in Sources */,

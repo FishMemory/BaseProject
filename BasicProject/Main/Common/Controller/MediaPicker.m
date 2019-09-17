@@ -154,7 +154,7 @@ static NSString * const app_name_En  = @"";
                     NSLog(@"found a video");
                     BOOL iswifi = [NetWorkDecideD IsEnableWIFI];
                     if( iswifi == NO ){
-                        [MyAlertView WarningTextAlertViewActionWithUIViewController:picker title:@"" message:TITLE cancelButtonTitle:@"放弃" CancelButtonColor:COL_THEME_BLUE OkButtonColor:COL_THEME_BLUE okButtonTitle:@"继续" cancelBlocks:^(UIAlertAction *but) {
+                        [MyAlertView WarningTextAlertViewActionWithUIViewController:picker title:@"" message:TITLE cancelButtonTitle:@"放弃" CancelButtonColor:COL_THEME OkButtonColor:COL_THEME okButtonTitle:@"继续" cancelBlocks:^(UIAlertAction *but) {
                             [picker dismissViewControllerAnimated:YES completion:^{
                                 [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
                             }];

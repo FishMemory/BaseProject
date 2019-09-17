@@ -172,7 +172,7 @@
     cancelBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     UIBarButtonItem *lefttem=[[UIBarButtonItem alloc] initWithCustomView:cancelBtn];
    
-     cancelBtn.titleLabel.textColor = COL_THEME_BLUE;
+     cancelBtn.titleLabel.textColor = COL_THEME;
    
      UIBarButtonItem *centerSpace=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
    
