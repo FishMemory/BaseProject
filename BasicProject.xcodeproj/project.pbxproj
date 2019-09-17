@@ -73,6 +73,8 @@
 		EC0658BB219AB11000636786 /* NSNotificationCenter+ClearNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0658A5219AB11000636786 /* NSNotificationCenter+ClearNotification.m */; };
 		EC0658BC219AB11000636786 /* JJException.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0658A8219AB11000636786 /* JJException.m */; };
 		EC0658BD219AB11000636786 /* JJExceptionProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0658AA219AB11000636786 /* JJExceptionProxy.m */; };
+		EC306BA42330E7E200E088DB /* BaseTableViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC306BA22330E7E200E088DB /* BaseTableViewVC.m */; };
+		EC306BA52330E7E200E088DB /* KBaseTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC306BA32330E7E200E088DB /* KBaseTVCell.m */; };
 		ECD7E257231A219C004AEDC9 /* FTPopOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD7E253231A219C004AEDC9 /* FTPopOverMenu.m */; };
 		ECD7E258231A219C004AEDC9 /* HDPopMenuHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD7E255231A219C004AEDC9 /* HDPopMenuHelper.m */; };
 		ECEA32402313D61A006F4E73 /* MyNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECEA323B2313D61A006F4E73 /* MyNavigationBar.xib */; };
@@ -256,6 +258,10 @@
 		EC0658A8219AB11000636786 /* JJException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJException.m; sourceTree = "<group>"; };
 		EC0658A9219AB11000636786 /* JJException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJException.h; sourceTree = "<group>"; };
 		EC0658AA219AB11000636786 /* JJExceptionProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJExceptionProxy.m; sourceTree = "<group>"; };
+		EC306BA02330E7E100E088DB /* KBaseTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBaseTVCell.h; sourceTree = "<group>"; };
+		EC306BA12330E7E100E088DB /* BaseTableViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewVC.h; sourceTree = "<group>"; };
+		EC306BA22330E7E200E088DB /* BaseTableViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewVC.m; sourceTree = "<group>"; };
+		EC306BA32330E7E200E088DB /* KBaseTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KBaseTVCell.m; sourceTree = "<group>"; };
 		ECD7E253231A219C004AEDC9 /* FTPopOverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPopOverMenu.m; sourceTree = "<group>"; };
 		ECD7E254231A219C004AEDC9 /* FTPopOverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPopOverMenu.h; sourceTree = "<group>"; };
 		ECD7E255231A219C004AEDC9 /* HDPopMenuHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDPopMenuHelper.m; sourceTree = "<group>"; };
@@ -457,6 +463,10 @@
 				EC0656A1219A779500636786 /* BaseUINavigationController.m */,
 				EC0656A4219A779500636786 /* TabBarControllerViewController.h */,
 				EC06569F219A779500636786 /* TabBarControllerViewController.m */,
+				EC306BA12330E7E100E088DB /* BaseTableViewVC.h */,
+				EC306BA22330E7E200E088DB /* BaseTableViewVC.m */,
+				EC306BA02330E7E100E088DB /* KBaseTVCell.h */,
+				EC306BA32330E7E200E088DB /* KBaseTVCell.m */,
 			);
 			path = BaseClass;
 			sourceTree = "<group>";
@@ -1072,6 +1082,7 @@
 				ECEA33152313D854006F4E73 /* CAAnimation+WAnimation.m in Sources */,
 				ECEA332B2313D854006F4E73 /* UIButton+Delay.m in Sources */,
 				EC065725219A779500636786 /* JSAction.m in Sources */,
+				EC306BA42330E7E200E088DB /* BaseTableViewVC.m in Sources */,
 				EC065727219A779500636786 /* ShareModel.m in Sources */,
 				EC06583B219A7AC600636786 /* JSONKit.m in Sources */,
 				ECEA33202313D854006F4E73 /* UIViewExt.m in Sources */,
@@ -1081,6 +1092,7 @@
 				EC06582B219A7AC600636786 /* SMPageControl.m in Sources */,
 				ECEA332A2313D854006F4E73 /* DLLabel.m in Sources */,
 				EC06571B219A779500636786 /* NetWorkDecideD.m in Sources */,
+				EC306BA52330E7E200E088DB /* KBaseTVCell.m in Sources */,
 				ECEA332F2313D854006F4E73 /* Configuration.m in Sources */,
 				ECEA332E2313D854006F4E73 /* UIStoryboard+Category.m in Sources */,
 				ECEA33192313D854006F4E73 /* DLButton.m in Sources */,

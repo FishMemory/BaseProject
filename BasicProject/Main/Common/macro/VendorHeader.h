@@ -41,8 +41,8 @@
 #import "MJRefresh.h"
 #import "UIImageView+WebCache.h"
 
-#import "HSDownloadManager.h" // 下载 
 #import "ZHPickView.h"
+#import "UIStoryboard+Category.h"
 #endif /* VendorHeader_h */
 
 
