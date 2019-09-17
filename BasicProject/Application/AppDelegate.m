@@ -32,7 +32,7 @@
     TabBarControllerViewController * tabBarVc =  [TabBarControllerViewController sharedInstance];
     [DeleLine deleteNavigateLine:tabBarVc.navigationController];
     self.window.rootViewController  = tabBarVc;
-    tabBarVc.selectedIndex = 2;
+
     return YES;
 }
 
