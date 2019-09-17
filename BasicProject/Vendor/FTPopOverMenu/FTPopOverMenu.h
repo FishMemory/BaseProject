@@ -30,6 +30,8 @@ typedef void (^FTPopOverMenuDismissBlock)();
 @property (nonatomic, assign)CGFloat menuWidth;
 @property (nonatomic, strong)UIColor *textColor;
 @property (nonatomic, strong)UIColor *tintColor;
+@property (nonatomic, strong)UIColor *tableViewBackgroundColor;
+@property (nonatomic, strong)UIColor *backgroundColor;
 @property (nonatomic, strong)UIColor *borderColor;
 @property (nonatomic, assign)CGFloat borderWidth;
 @property (nonatomic, strong)UIFont *textFont;
@@ -37,6 +39,7 @@ typedef void (^FTPopOverMenuDismissBlock)();
 @property (nonatomic, assign)BOOL ignoreImageOriginalColor;// Default is 'NO', if sets to 'YES', images color will be same as textColor.
 @property (nonatomic, assign)BOOL allowRoundedArrow;// Default is 'NO', if sets to 'YES', the arrow will be drawn with round corner.
 @property (nonatomic, assign)NSTimeInterval animationDuration;
+
 /**
  *  defaultConfiguration
  *

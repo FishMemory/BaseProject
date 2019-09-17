@@ -9,24 +9,24 @@
 #import "FTPopOverMenu.h"
 
 // changeable
-#define FTDefaultMargin                     4.f
-#define FTDefaultMenuTextMargin             6.f
+#define FTDefaultMargin                     8.f
+#define FTDefaultMenuTextMargin             10.f
 #define FTDefaultMenuIconMargin             6.f
-#define FTDefaultMenuCornerRadius           5.f
+#define FTDefaultMenuCornerRadius           3.f
 #define FTDefaultAnimationDuration          0.2
 // unchangeable, change them at your own risk
 #define KSCREEN_WIDTH                       [[UIScreen mainScreen] bounds].size.width
 #define KSCREEN_HEIGHT                      [[UIScreen mainScreen] bounds].size.height
-#define FTDefaultBackgroundColor            [UIColor clearColor]
-#define FTDefaultTintColor                  [UIColor colorWithRed:80/255.f green:80/255.f blue:80/255.f alpha:1.f]
-#define FTDefaultTextColor                  [UIColor whiteColor]
+#define FTDefaultBackgroundColor             [UIColor colorWithRed:80/255.f green:80/255.f blue:80/255.f alpha:.9f]
+#define FTDefaultTintColor                  [UIColor whiteColor]
+#define FTDefaultTextColor                  [UIColor blackColor]
 #define FTDefaultMenuFont                   [UIFont systemFontOfSize:14.f]
 #define FTDefaultMenuWidth                  120.f
 #define FTDefaultMenuIconSize               24.f
 #define FTDefaultMenuRowHeight              40.f
 #define FTDefaultMenuBorderWidth            0.8
-#define FTDefaultMenuArrowWidth             8.f
-#define FTDefaultMenuArrowHeight            10.f
+#define FTDefaultMenuArrowWidth             6.f
+#define FTDefaultMenuArrowHeight            6.f
 #define FTDefaultMenuArrowWidth_R           12.f
 #define FTDefaultMenuArrowHeight_R          12.f
 #define FTDefaultMenuArrowRoundRadius       4.f
@@ -280,8 +280,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 {
     if (!_menuTableView) {
         _menuTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
-        _menuTableView.backgroundColor = FTDefaultBackgroundColor;
-        _menuTableView.separatorColor = [UIColor grayColor];
+        _menuTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _menuTableView.layer.cornerRadius = FTDefaultMenuCornerRadius;
         _menuTableView.scrollEnabled = NO;
         _menuTableView.clipsToBounds = YES;
@@ -289,6 +288,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         _menuTableView.dataSource = self;
         [self addSubview:_menuTableView];
     }
+    _menuTableView.backgroundColor = [FTPopOverMenuConfiguration defaultConfiguration].tableViewBackgroundColor;
     return _menuTableView;
 }
 
@@ -606,8 +606,11 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
           dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock
 {
     dispatch_async(dispatch_get_main_queue(), ^{
+        
         [self.backgroundView addSubview:self.popMenuView];
         [[self backgroundWindow] addSubview:self.backgroundView];
+        
+        self.backgroundView.backgroundColor = [FTPopOverMenuConfiguration defaultConfiguration].backgroundColor;
         
         self.sender = sender;
         self.senderFrame = senderFrame;
@@ -619,7 +622,6 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         [self adjustPopOverMenu];
     });
 }
-
 -(void)adjustPopOverMenu
 {
     

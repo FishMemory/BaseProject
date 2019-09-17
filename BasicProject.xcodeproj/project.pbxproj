@@ -51,7 +51,6 @@
 		EC0657FD219A7AC600636786 /* JJCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EC065759219A7AC500636786 /* JJCTextField.m */; };
 		EC0657FE219A7AC600636786 /* JJCPayCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EC06575A219A7AC500636786 /* JJCPayCodeTextField.m */; };
 		EC0657FF219A7AC600636786 /* JJCPayCodeTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC06575E219A7AC500636786 /* JJCPayCodeTextFieldCell.m */; };
-		EC065800219A7AC600636786 /* FTPopOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = EC065761219A7AC500636786 /* FTPopOverMenu.m */; };
 		EC065829219A7AC600636786 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0657B9219A7AC600636786 /* Parse.framework */; };
 		EC06582A219A7AC600636786 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0657BA219A7AC600636786 /* Bolts.framework */; };
 		EC06582B219A7AC600636786 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657BC219A7AC600636786 /* SMPageControl.m */; };
@@ -91,6 +90,8 @@
 		EC0658BB219AB11000636786 /* NSNotificationCenter+ClearNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0658A5219AB11000636786 /* NSNotificationCenter+ClearNotification.m */; };
 		EC0658BC219AB11000636786 /* JJException.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0658A8219AB11000636786 /* JJException.m */; };
 		EC0658BD219AB11000636786 /* JJExceptionProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0658AA219AB11000636786 /* JJExceptionProxy.m */; };
+		ECD7E257231A219C004AEDC9 /* FTPopOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD7E253231A219C004AEDC9 /* FTPopOverMenu.m */; };
+		ECD7E258231A219C004AEDC9 /* HDPopMenuHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD7E255231A219C004AEDC9 /* HDPopMenuHelper.m */; };
 		ECEA32402313D61A006F4E73 /* MyNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECEA323B2313D61A006F4E73 /* MyNavigationBar.xib */; };
 		ECEA32412313D61A006F4E73 /* MyNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA323C2313D61A006F4E73 /* MyNavigationBar.m */; };
 		ECEA32422313D61A006F4E73 /* MyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA323F2313D61A006F4E73 /* MyAlertView.m */; };
@@ -232,8 +233,6 @@
 		EC06575C219A7AC500636786 /* JJCTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJCTextField.h; sourceTree = "<group>"; };
 		EC06575D219A7AC500636786 /* JJCPayCodeTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJCPayCodeTextField.h; sourceTree = "<group>"; };
 		EC06575E219A7AC500636786 /* JJCPayCodeTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJCPayCodeTextFieldCell.m; sourceTree = "<group>"; };
-		EC065760219A7AC500636786 /* FTPopOverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPopOverMenu.h; sourceTree = "<group>"; };
-		EC065761219A7AC500636786 /* FTPopOverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPopOverMenu.m; sourceTree = "<group>"; };
 		EC0657B9219A7AC600636786 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		EC0657BA219A7AC600636786 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		EC0657BC219A7AC600636786 /* SMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPageControl.m; sourceTree = "<group>"; };
@@ -311,6 +310,10 @@
 		EC0658A8219AB11000636786 /* JJException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJException.m; sourceTree = "<group>"; };
 		EC0658A9219AB11000636786 /* JJException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJException.h; sourceTree = "<group>"; };
 		EC0658AA219AB11000636786 /* JJExceptionProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJExceptionProxy.m; sourceTree = "<group>"; };
+		ECD7E253231A219C004AEDC9 /* FTPopOverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPopOverMenu.m; sourceTree = "<group>"; };
+		ECD7E254231A219C004AEDC9 /* FTPopOverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPopOverMenu.h; sourceTree = "<group>"; };
+		ECD7E255231A219C004AEDC9 /* HDPopMenuHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDPopMenuHelper.m; sourceTree = "<group>"; };
+		ECD7E256231A219C004AEDC9 /* HDPopMenuHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDPopMenuHelper.h; sourceTree = "<group>"; };
 		ECEA323B2313D61A006F4E73 /* MyNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNavigationBar.xib; sourceTree = "<group>"; };
 		ECEA323C2313D61A006F4E73 /* MyNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNavigationBar.m; sourceTree = "<group>"; };
 		ECEA323D2313D61A006F4E73 /* MyAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlertView.h; sourceTree = "<group>"; };
@@ -762,8 +765,10 @@
 		EC06575F219A7AC500636786 /* FTPopOverMenu */ = {
 			isa = PBXGroup;
 			children = (
-				EC065760219A7AC500636786 /* FTPopOverMenu.h */,
-				EC065761219A7AC500636786 /* FTPopOverMenu.m */,
+				ECD7E254231A219C004AEDC9 /* FTPopOverMenu.h */,
+				ECD7E253231A219C004AEDC9 /* FTPopOverMenu.m */,
+				ECD7E256231A219C004AEDC9 /* HDPopMenuHelper.h */,
+				ECD7E255231A219C004AEDC9 /* HDPopMenuHelper.m */,
 			);
 			path = FTPopOverMenu;
 			sourceTree = "<group>";
@@ -1265,6 +1270,7 @@
 				EC0658B8219AB11000636786 /* NSString+StringHook.m in Sources */,
 				EC065704219A779500636786 /* MediaPicker.m in Sources */,
 				ECEA33322313D854006F4E73 /* DeleLine.m in Sources */,
+				ECD7E258231A219C004AEDC9 /* HDPopMenuHelper.m in Sources */,
 				EC0658B3219AB11000636786 /* NSObject+SwizzleHook.m in Sources */,
 				EC06572D219A779500636786 /* MyAlertView.m in Sources */,
 				EC0658B7219AB11000636786 /* NSMutableString+MutableStringHook.m in Sources */,
@@ -1305,13 +1311,13 @@
 				EC065832219A7AC600636786 /* UIImage+RSKImageCropper.m in Sources */,
 				ECEA331E2313D854006F4E73 /* DLTouchID.m in Sources */,
 				EC065715219A779500636786 /* CheckNumber.m in Sources */,
+				ECD7E257231A219C004AEDC9 /* FTPopOverMenu.m in Sources */,
 				EC0658AC219AB11000636786 /* NSMutableArray+MutableArrayHook.m in Sources */,
 				EC065839219A7AC600636786 /* HYPageView.m in Sources */,
 				EC06571D219A779500636786 /* EncryptClass.m in Sources */,
 				ECEA330F2313D854006F4E73 /* NSString+SizeLayout.m in Sources */,
 				EC065831219A7AC600636786 /* RSKImageCropViewController.m in Sources */,
 				ECEA331D2313D854006F4E73 /* UIColor+Extend.m in Sources */,
-				EC065800219A7AC600636786 /* FTPopOverMenu.m in Sources */,
 				EC065722219A779500636786 /* titleView.m in Sources */,
 				ECEA33292313D854006F4E73 /* DLPageControl.m in Sources */,
 				ECEA33222313D854006F4E73 /* NSString+syCategory.m in Sources */,
