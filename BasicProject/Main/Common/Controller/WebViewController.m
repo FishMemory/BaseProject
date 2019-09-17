@@ -31,7 +31,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [self disableIQReturnKey];
+   
 }
 
 -(void)getUrl{

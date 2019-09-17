@@ -75,6 +75,9 @@
 		EC0658BD219AB11000636786 /* JJExceptionProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0658AA219AB11000636786 /* JJExceptionProxy.m */; };
 		EC306BA42330E7E200E088DB /* BaseTableViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC306BA22330E7E200E088DB /* BaseTableViewVC.m */; };
 		EC306BA52330E7E200E088DB /* KBaseTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC306BA32330E7E200E088DB /* KBaseTVCell.m */; };
+		EC306BAD2330EB7D00E088DB /* JJCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EC306BA72330EB7D00E088DB /* JJCTextField.m */; };
+		EC306BAE2330EB7D00E088DB /* JJCPayCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EC306BA82330EB7D00E088DB /* JJCPayCodeTextField.m */; };
+		EC306BAF2330EB7D00E088DB /* JJCPayCodeTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC306BAC2330EB7D00E088DB /* JJCPayCodeTextFieldCell.m */; };
 		ECD7E257231A219C004AEDC9 /* FTPopOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD7E253231A219C004AEDC9 /* FTPopOverMenu.m */; };
 		ECD7E258231A219C004AEDC9 /* HDPopMenuHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD7E255231A219C004AEDC9 /* HDPopMenuHelper.m */; };
 		ECEA32402313D61A006F4E73 /* MyNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECEA323B2313D61A006F4E73 /* MyNavigationBar.xib */; };
@@ -83,12 +86,10 @@
 		ECEA330E2313D854006F4E73 /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA32C12313D854006F4E73 /* NSString+Hash.m */; };
 		ECEA330F2313D854006F4E73 /* NSString+SizeLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA32C32313D854006F4E73 /* NSString+SizeLayout.m */; };
 		ECEA33102313D854006F4E73 /* UIButton+countDown.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA32C62313D854006F4E73 /* UIButton+countDown.m */; };
-		ECEA33112313D854006F4E73 /* DLAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA32C72313D854006F4E73 /* DLAlert.m */; };
 		ECEA33122313D854006F4E73 /* DLTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA32C82313D854006F4E73 /* DLTextField.m */; };
 		ECEA33132313D854006F4E73 /* UIWindow+DLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA32C92313D854006F4E73 /* UIWindow+DLExtension.m */; };
 		ECEA33142313D854006F4E73 /* UILabel+Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA32CA2313D854006F4E73 /* UILabel+Factory.m */; };
 		ECEA33152313D854006F4E73 /* CAAnimation+WAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA32CD2313D854006F4E73 /* CAAnimation+WAnimation.m */; };
-		ECEA33162313D854006F4E73 /* UIViewController+DLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA32CE2313D854006F4E73 /* UIViewController+DLExtension.m */; };
 		ECEA33172313D854006F4E73 /* UIView+syCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA32CF2313D854006F4E73 /* UIView+syCategory.m */; };
 		ECEA33182313D854006F4E73 /* UIButton+BtSelected.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA32D02313D854006F4E73 /* UIButton+BtSelected.m */; };
 		ECEA33192313D854006F4E73 /* DLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA32D32313D854006F4E73 /* DLButton.m */; };
@@ -115,7 +116,6 @@
 		ECEA332E2313D854006F4E73 /* UIStoryboard+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA33032313D854006F4E73 /* UIStoryboard+Category.m */; };
 		ECEA332F2313D854006F4E73 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA33082313D854006F4E73 /* Configuration.m */; };
 		ECEA33302313D854006F4E73 /* NSFileManager+syCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA33092313D854006F4E73 /* NSFileManager+syCategory.m */; };
-		ECEA33312313D854006F4E73 /* UIButton+singleSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA330B2313D854006F4E73 /* UIButton+singleSelect.m */; };
 		ECEA33322313D854006F4E73 /* DeleLine.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA330C2313D854006F4E73 /* DeleLine.m */; };
 /* End PBXBuildFile section */
 
@@ -262,6 +262,12 @@
 		EC306BA12330E7E100E088DB /* BaseTableViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewVC.h; sourceTree = "<group>"; };
 		EC306BA22330E7E200E088DB /* BaseTableViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewVC.m; sourceTree = "<group>"; };
 		EC306BA32330E7E200E088DB /* KBaseTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KBaseTVCell.m; sourceTree = "<group>"; };
+		EC306BA72330EB7D00E088DB /* JJCTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJCTextField.m; sourceTree = "<group>"; };
+		EC306BA82330EB7D00E088DB /* JJCPayCodeTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJCPayCodeTextField.m; sourceTree = "<group>"; };
+		EC306BA92330EB7D00E088DB /* JJCPayCodeTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJCPayCodeTextFieldCell.h; sourceTree = "<group>"; };
+		EC306BAA2330EB7D00E088DB /* JJCTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJCTextField.h; sourceTree = "<group>"; };
+		EC306BAB2330EB7D00E088DB /* JJCPayCodeTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJCPayCodeTextField.h; sourceTree = "<group>"; };
+		EC306BAC2330EB7D00E088DB /* JJCPayCodeTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJCPayCodeTextFieldCell.m; sourceTree = "<group>"; };
 		ECD7E253231A219C004AEDC9 /* FTPopOverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPopOverMenu.m; sourceTree = "<group>"; };
 		ECD7E254231A219C004AEDC9 /* FTPopOverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPopOverMenu.h; sourceTree = "<group>"; };
 		ECD7E255231A219C004AEDC9 /* HDPopMenuHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDPopMenuHelper.m; sourceTree = "<group>"; };
@@ -279,14 +285,12 @@
 		ECEA32C42313D854006F4E73 /* NSString+syCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+syCategory.h"; sourceTree = "<group>"; };
 		ECEA32C52313D854006F4E73 /* DLAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAnimation.h; sourceTree = "<group>"; };
 		ECEA32C62313D854006F4E73 /* UIButton+countDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+countDown.m"; sourceTree = "<group>"; };
-		ECEA32C72313D854006F4E73 /* DLAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlert.m; sourceTree = "<group>"; };
 		ECEA32C82313D854006F4E73 /* DLTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTextField.m; sourceTree = "<group>"; };
 		ECEA32C92313D854006F4E73 /* UIWindow+DLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+DLExtension.m"; sourceTree = "<group>"; };
 		ECEA32CA2313D854006F4E73 /* UILabel+Factory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Factory.m"; sourceTree = "<group>"; };
 		ECEA32CB2313D854006F4E73 /* ImageCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCenter.h; sourceTree = "<group>"; };
 		ECEA32CC2313D854006F4E73 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		ECEA32CD2313D854006F4E73 /* CAAnimation+WAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+WAnimation.m"; sourceTree = "<group>"; };
-		ECEA32CE2313D854006F4E73 /* UIViewController+DLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DLExtension.m"; sourceTree = "<group>"; };
 		ECEA32CF2313D854006F4E73 /* UIView+syCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+syCategory.m"; sourceTree = "<group>"; };
 		ECEA32D02313D854006F4E73 /* UIButton+BtSelected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BtSelected.m"; sourceTree = "<group>"; };
 		ECEA32D12313D854006F4E73 /* DLLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLabel.h; sourceTree = "<group>"; };
@@ -299,7 +303,6 @@
 		ECEA32D92313D854006F4E73 /* DeleLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleLine.h; sourceTree = "<group>"; };
 		ECEA32DB2313D854006F4E73 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		ECEA32DC2313D854006F4E73 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
-		ECEA32DD2313D854006F4E73 /* UIButton+singleSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+singleSelect.h"; sourceTree = "<group>"; };
 		ECEA32DE2313D854006F4E73 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
 		ECEA32DF2313D854006F4E73 /* NSFileManager+syCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+syCategory.h"; sourceTree = "<group>"; };
 		ECEA32E02313D854006F4E73 /* NSObject+Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Notification.m"; sourceTree = "<group>"; };
@@ -318,7 +321,6 @@
 		ECEA32ED2313D854006F4E73 /* ImageCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCenter.m; sourceTree = "<group>"; };
 		ECEA32EE2313D854006F4E73 /* UILabel+Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Factory.h"; sourceTree = "<group>"; };
 		ECEA32EF2313D854006F4E73 /* DLTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTextField.h; sourceTree = "<group>"; };
-		ECEA32F02313D854006F4E73 /* DLAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlert.h; sourceTree = "<group>"; };
 		ECEA32F12313D854006F4E73 /* UIWindow+DLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+DLExtension.h"; sourceTree = "<group>"; };
 		ECEA32F22313D854006F4E73 /* UIButton+countDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+countDown.h"; sourceTree = "<group>"; };
 		ECEA32F32313D854006F4E73 /* THLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THLabel.h; sourceTree = "<group>"; };
@@ -329,7 +331,6 @@
 		ECEA32F82313D854006F4E73 /* DLLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLabel.m; sourceTree = "<group>"; };
 		ECEA32F92313D854006F4E73 /* UIButton+BtSelected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+BtSelected.h"; sourceTree = "<group>"; };
 		ECEA32FA2313D854006F4E73 /* UIView+syCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+syCategory.h"; sourceTree = "<group>"; };
-		ECEA32FB2313D854006F4E73 /* UIViewController+DLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DLExtension.h"; sourceTree = "<group>"; };
 		ECEA32FD2313D854006F4E73 /* UIButton+Delay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Delay.m"; sourceTree = "<group>"; };
 		ECEA32FE2313D854006F4E73 /* UIButton+touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+touch.h"; sourceTree = "<group>"; };
 		ECEA32FF2313D854006F4E73 /* UIButton+touch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+touch.m"; sourceTree = "<group>"; };
@@ -344,7 +345,6 @@
 		ECEA33082313D854006F4E73 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
 		ECEA33092313D854006F4E73 /* NSFileManager+syCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+syCategory.m"; sourceTree = "<group>"; };
 		ECEA330A2313D854006F4E73 /* NSObject+Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Notification.h"; sourceTree = "<group>"; };
-		ECEA330B2313D854006F4E73 /* UIButton+singleSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+singleSelect.m"; sourceTree = "<group>"; };
 		ECEA330C2313D854006F4E73 /* DeleLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleLine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -836,9 +836,23 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		EC306BA62330EB7D00E088DB /* JJCPayCodeTextField */ = {
+			isa = PBXGroup;
+			children = (
+				EC306BA72330EB7D00E088DB /* JJCTextField.m */,
+				EC306BA82330EB7D00E088DB /* JJCPayCodeTextField.m */,
+				EC306BA92330EB7D00E088DB /* JJCPayCodeTextFieldCell.h */,
+				EC306BAA2330EB7D00E088DB /* JJCTextField.h */,
+				EC306BAB2330EB7D00E088DB /* JJCPayCodeTextField.h */,
+				EC306BAC2330EB7D00E088DB /* JJCPayCodeTextFieldCell.m */,
+			);
+			path = JJCPayCodeTextField;
+			sourceTree = "<group>";
+		};
 		ECEA32BB2313D854006F4E73 /* GlobalUtil */ = {
 			isa = PBXGroup;
 			children = (
+				EC306BA62330EB7D00E088DB /* JJCPayCodeTextField */,
 				ECEA32BC2313D854006F4E73 /* AutoArrange.h */,
 				ECEA32EC2313D854006F4E73 /* AutoArrange.m */,
 				ECEA33022313D854006F4E73 /* CAAnimation+WAnimation.h */,
@@ -847,8 +861,6 @@
 				ECEA33082313D854006F4E73 /* Configuration.m */,
 				ECEA32D92313D854006F4E73 /* DeleLine.h */,
 				ECEA330C2313D854006F4E73 /* DeleLine.m */,
-				ECEA32F02313D854006F4E73 /* DLAlert.h */,
-				ECEA32C72313D854006F4E73 /* DLAlert.m */,
 				ECEA32C52313D854006F4E73 /* DLAnimation.h */,
 				ECEA32E62313D854006F4E73 /* DLAnimation.m */,
 				ECEA32F62313D854006F4E73 /* DLButton.h */,
@@ -885,8 +897,6 @@
 				ECEA32D02313D854006F4E73 /* UIButton+BtSelected.m */,
 				ECEA32F22313D854006F4E73 /* UIButton+countDown.h */,
 				ECEA32C62313D854006F4E73 /* UIButton+countDown.m */,
-				ECEA32DD2313D854006F4E73 /* UIButton+singleSelect.h */,
-				ECEA330B2313D854006F4E73 /* UIButton+singleSelect.m */,
 				ECEA33072313D854006F4E73 /* UIColor+Extend.h */,
 				ECEA32E12313D854006F4E73 /* UIColor+Extend.m */,
 				ECEA32D42313D854006F4E73 /* UIFont+WDCustomLoader.h */,
@@ -904,8 +914,6 @@
 				ECEA32BE2313D854006F4E73 /* UIView+DLExtension.m */,
 				ECEA32FA2313D854006F4E73 /* UIView+syCategory.h */,
 				ECEA32CF2313D854006F4E73 /* UIView+syCategory.m */,
-				ECEA32FB2313D854006F4E73 /* UIViewController+DLExtension.h */,
-				ECEA32CE2313D854006F4E73 /* UIViewController+DLExtension.m */,
 				ECEA33042313D854006F4E73 /* UIViewExt.h */,
 				ECEA32E42313D854006F4E73 /* UIViewExt.m */,
 				ECEA32F12313D854006F4E73 /* UIWindow+DLExtension.h */,
@@ -1090,6 +1098,7 @@
 				EC0658BA219AB11000636786 /* NSAttributedString+AttributedStringHook.m in Sources */,
 				ECEA33212313D854006F4E73 /* DLAnimation.m in Sources */,
 				EC06582B219A7AC600636786 /* SMPageControl.m in Sources */,
+				EC306BAD2330EB7D00E088DB /* JJCTextField.m in Sources */,
 				ECEA332A2313D854006F4E73 /* DLLabel.m in Sources */,
 				EC06571B219A779500636786 /* NetWorkDecideD.m in Sources */,
 				EC306BA52330E7E200E088DB /* KBaseTVCell.m in Sources */,
@@ -1116,11 +1125,9 @@
 				EC065728219A779500636786 /* BaseTableViewCell.m in Sources */,
 				EC0658B9219AB11000636786 /* NSMutableSet+MutableSetHook.m in Sources */,
 				EC0658AE219AB11000636786 /* NSObject+KVOCrash.m in Sources */,
-				ECEA33162313D854006F4E73 /* UIViewController+DLExtension.m in Sources */,
 				EC0658B1219AB11000636786 /* NSMutableDictionary+MutableDictionaryHook.m in Sources */,
 				ECEA330D2313D854006F4E73 /* UIView+DLExtension.m in Sources */,
 				EC0657FA219A7AC600636786 /* NSDictionary+safeEX.m in Sources */,
-				ECEA33112313D854006F4E73 /* DLAlert.m in Sources */,
 				ECEA33172313D854006F4E73 /* UIView+syCategory.m in Sources */,
 				ECEA32412313D61A006F4E73 /* MyNavigationBar.m in Sources */,
 				EC0657FC219A7AC600636786 /* XTimer.m in Sources */,
@@ -1138,6 +1145,7 @@
 				ECEA33242313D854006F4E73 /* UISearchBar+Configuration.m in Sources */,
 				EC0658BC219AB11000636786 /* JJException.m in Sources */,
 				ECEA33282313D854006F4E73 /* UIFont+WDCustomLoader.m in Sources */,
+				EC306BAE2330EB7D00E088DB /* JJCPayCodeTextField.m in Sources */,
 				ECEA331B2313D854006F4E73 /* UINavigationBar+Awesome.m in Sources */,
 				EC065837219A7AC600636786 /* JFTagListView.m in Sources */,
 				EC065724219A779500636786 /* ProgressHUD.m in Sources */,
@@ -1173,7 +1181,7 @@
 				EC065722219A779500636786 /* titleView.m in Sources */,
 				ECEA33292313D854006F4E73 /* DLPageControl.m in Sources */,
 				ECEA33222313D854006F4E73 /* NSString+syCategory.m in Sources */,
-				ECEA33312313D854006F4E73 /* UIButton+singleSelect.m in Sources */,
+				EC306BAF2330EB7D00E088DB /* JJCPayCodeTextFieldCell.m in Sources */,
 				EC06570B219A779500636786 /* HttpServices.m in Sources */,
 				EC06571E219A779500636786 /* ZHPickView.m in Sources */,
 			);

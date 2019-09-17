@@ -121,21 +121,7 @@ static NSString * const app_name_En  = @"";
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     //  判断是选择背景图
     if(self.key != nil && [self.key isEqualToString:@"YES"]){
-        //  获取到UIIMagePickerControllerOriginalImage（info中选择的原图）
-        UIImage * OriginalImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-        NSData *backImagdata = UIImageJPEGRepresentation(OriginalImage, 0.3);
-        
-        UIImage *selectImage = [UIImage imageWithData:backImagdata];
-        if (selectImage != nil) {
-            RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:selectImage cropMode:RSKImageCropModeCircle];
-            imageCropVC.cropMode = RSKImageCropModeSquare;
-            imageCropVC.delegate = (id)self.vcControllers;
-            imageCropVC.scale = self.scale;
-            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:imageCropVC];
-           [picker presentViewController:nav animated:YES completion:^{
-                 [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-           }];
-        }
+      
    
     }else{
         UIImage* editedImage= [[UIImage alloc]init];

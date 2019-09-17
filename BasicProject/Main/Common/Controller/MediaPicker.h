@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <MediaPlayer/MPMoviePlayerController.h>
-#import "RSKImageCropper.h"
 
 typedef enum {
     CAMERA = 1,
@@ -30,7 +29,7 @@ typedef enum {
 @end
 
 
-@interface MediaPicker : NSObject <UINavigationControllerDelegate,UIImagePickerControllerDelegate,RSKImageCropViewControllerDelegate>
+@interface MediaPicker : NSObject <UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (weak, nonatomic) id <MediaPickerDelegate>mediaPickerDelegate;
 @property (strong, nonatomic) NSString *key;
 @property (strong, nonatomic) UIViewController *vcControllers;

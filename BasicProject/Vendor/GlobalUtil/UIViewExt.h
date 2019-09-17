@@ -11,7 +11,6 @@ CGPoint CGRectGetCenter(CGRect rect);
 CGRect  CGRectMoveToCenter(CGRect rect, CGPoint center);
 
 
-
 @interface UIView (ViewFrameGeometry)
 @property CGPoint origin;
 @property CGSize size;
