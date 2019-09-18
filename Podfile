@@ -11,7 +11,7 @@ pod 'Masonry'
         pod 'MJExtension'
 	pod 'MJRefresh'
 	pod 'SDWebImage', '~> 3.8.2'
-
+  pod 'ZZFLEX', :git => 'https://github.com/tbl00c/ZZFLEX.git'
 end
 post_install do |installer|
 installer.pods_project.targets.each do |target|

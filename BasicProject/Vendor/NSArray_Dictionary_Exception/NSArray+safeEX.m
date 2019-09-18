@@ -57,7 +57,7 @@
     return [self count] > 0 ? [self objectAtIndexCheck:0] : nil;
 }
 
-- (BOOL)isEmpty
+- (BOOL)isEmptyEX
 {
     return ([self count] == 0);
 }
@@ -422,7 +422,7 @@
 - (CGPoint)pointAtIndex:(NSUInteger)index defaultValue:(CGPoint)defaultValue
 {
     id value = [self objectAtIndexCheck:index];
-    if ([value isKindOfClass:[NSString class]] && ![value isEmpty])
+    if ([value isKindOfClass:[NSString class]] && ![value isEmptyEX])
         return CGPointFromString(value);
     else if ([value isKindOfClass:[NSValue class]])
         return [value CGPointValue];
@@ -438,7 +438,7 @@
 - (CGSize)sizeAtIndex:(NSUInteger)index defaultValue:(CGSize)defaultValue
 {
     id value = [self objectAtIndexCheck:index];
-    if ([value isKindOfClass:[NSString class]] && ![value isEmpty])
+    if ([value isKindOfClass:[NSString class]] && ![value isEmptyEX])
         return CGSizeFromString(value);
     else if ([value isKindOfClass:[NSValue class]])
         return [value CGSizeValue];
@@ -454,7 +454,7 @@
 - (CGRect)rectAtIndex:(NSUInteger)index defaultValue:(CGRect)defaultValue
 {
     id value = [self objectAtIndexCheck:index];
-    if ([value isKindOfClass:[NSString class]] && ![value isEmpty])
+    if ([value isKindOfClass:[NSString class]] && ![value isEmptyEX])
         return CGRectFromString(value);
     else if ([value isKindOfClass:[NSValue class]])
         return [value CGRectValue];

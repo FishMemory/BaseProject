@@ -104,7 +104,7 @@
     }
 }
 
-- (BOOL)isEmpty
+- (BOOL)isEmptyEX
 {
     return ([self count] == 0);
 }
@@ -470,7 +470,7 @@
 - (CGPoint)pointForKey:(id)key defaultValue:(CGPoint)defaultValue
 {
     id value = [self objectForKeyCheck:key];
-    if ([value isKindOfClass:[NSString class]] && ![value isEmpty])
+    if ([value isKindOfClass:[NSString class]] && ![value isEmptyEX])
         return CGPointFromString(value);
     else if ([value isKindOfClass:[NSValue class]])
         return [value CGPointValue];
@@ -486,7 +486,7 @@
 - (CGSize)sizeForKey:(id)key defaultValue:(CGSize)defaultValue
 {
     id value = [self objectForKeyCheck:key];
-    if ([value isKindOfClass:[NSString class]] && ![value isEmpty])
+    if ([value isKindOfClass:[NSString class]] && ![value isEmptyEX])
         return CGSizeFromString(value);
     else if ([value isKindOfClass:[NSValue class]])
         return [value CGSizeValue];
@@ -502,7 +502,7 @@
 - (CGRect)rectForKey:(id)key defaultValue:(CGRect)defaultValue
 {
     id value = [self objectForKeyCheck:key];
-    if ([value isKindOfClass:[NSString class]] && ![value isEmpty])
+    if ([value isKindOfClass:[NSString class]] && ![value isEmptyEX])
         return CGRectFromString(value);
     else if ([value isKindOfClass:[NSValue class]])
         return [value CGRectValue];

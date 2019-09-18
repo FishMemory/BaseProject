@@ -32,7 +32,7 @@
  @abstract 是否没有对象，没有对象也是为YES；
  @result 返回BOOL
  */
-- (BOOL)isEmpty;
+- (BOOL)isEmptyEX;
 
 /*!
  @method objectAtIndexCheck:

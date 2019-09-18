@@ -41,7 +41,7 @@
  @abstract 是否空,字典里没有对象也是为YES；
  @result 返回bool
  */
-- (BOOL)isEmpty;
+- (BOOL)isEmptyEX;
 
 /*!
  @method objectForKeyCheck

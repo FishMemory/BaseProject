@@ -43,8 +43,6 @@
 		EC0657EF219A7AC600636786 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = EC065738219A7AC500636786 /* UIView+Frame.m */; };
 		EC0657F0219A7AC600636786 /* NSTimer+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = EC06573B219A7AC500636786 /* NSTimer+addition.m */; };
 		EC0657F1219A7AC600636786 /* WYWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EC06573D219A7AC500636786 /* WYWebProgressLayer.m */; };
-		EC0657FA219A7AC600636786 /* NSDictionary+safeEX.m in Sources */ = {isa = PBXBuildFile; fileRef = EC065753219A7AC500636786 /* NSDictionary+safeEX.m */; };
-		EC0657FB219A7AC600636786 /* NSArray+safeEX.m in Sources */ = {isa = PBXBuildFile; fileRef = EC065754219A7AC500636786 /* NSArray+safeEX.m */; };
 		EC0657FC219A7AC600636786 /* XTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = EC065756219A7AC500636786 /* XTimer.m */; };
 		EC06582B219A7AC600636786 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657BC219A7AC600636786 /* SMPageControl.m */; };
 		EC06582C219A7AC600636786 /* MyPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0657BF219A7AC600636786 /* MyPageControl.m */; };
@@ -78,6 +76,8 @@
 		EC306BAD2330EB7D00E088DB /* JJCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EC306BA72330EB7D00E088DB /* JJCTextField.m */; };
 		EC306BAE2330EB7D00E088DB /* JJCPayCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EC306BA82330EB7D00E088DB /* JJCPayCodeTextField.m */; };
 		EC306BAF2330EB7D00E088DB /* JJCPayCodeTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC306BAC2330EB7D00E088DB /* JJCPayCodeTextFieldCell.m */; };
+		EC3CD39023320BDC00274F81 /* NSArray+safeEX.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3CD38D23320BDC00274F81 /* NSArray+safeEX.m */; };
+		EC3CD39123320BDC00274F81 /* NSDictionary+safeEX.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3CD38E23320BDC00274F81 /* NSDictionary+safeEX.m */; };
 		ECD7E257231A219C004AEDC9 /* FTPopOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD7E253231A219C004AEDC9 /* FTPopOverMenu.m */; };
 		ECD7E258231A219C004AEDC9 /* HDPopMenuHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD7E255231A219C004AEDC9 /* HDPopMenuHelper.m */; };
 		ECEA32402313D61A006F4E73 /* MyNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECEA323B2313D61A006F4E73 /* MyNavigationBar.xib */; };
@@ -199,10 +199,6 @@
 		EC06573B219A7AC500636786 /* NSTimer+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+addition.m"; sourceTree = "<group>"; };
 		EC06573C219A7AC500636786 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		EC06573D219A7AC500636786 /* WYWebProgressLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYWebProgressLayer.m; sourceTree = "<group>"; };
-		EC065751219A7AC500636786 /* NSDictionary+safeEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+safeEX.h"; sourceTree = "<group>"; };
-		EC065752219A7AC500636786 /* NSArray+safeEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+safeEX.h"; sourceTree = "<group>"; };
-		EC065753219A7AC500636786 /* NSDictionary+safeEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+safeEX.m"; sourceTree = "<group>"; };
-		EC065754219A7AC500636786 /* NSArray+safeEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+safeEX.m"; sourceTree = "<group>"; };
 		EC065756219A7AC500636786 /* XTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTimer.m; sourceTree = "<group>"; };
 		EC065757219A7AC500636786 /* XTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTimer.h; sourceTree = "<group>"; };
 		EC0657BC219A7AC600636786 /* SMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPageControl.m; sourceTree = "<group>"; };
@@ -268,6 +264,10 @@
 		EC306BAA2330EB7D00E088DB /* JJCTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJCTextField.h; sourceTree = "<group>"; };
 		EC306BAB2330EB7D00E088DB /* JJCPayCodeTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJCPayCodeTextField.h; sourceTree = "<group>"; };
 		EC306BAC2330EB7D00E088DB /* JJCPayCodeTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJCPayCodeTextFieldCell.m; sourceTree = "<group>"; };
+		EC3CD38C23320BDC00274F81 /* NSDictionary+safeEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+safeEX.h"; sourceTree = "<group>"; };
+		EC3CD38D23320BDC00274F81 /* NSArray+safeEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+safeEX.m"; sourceTree = "<group>"; };
+		EC3CD38E23320BDC00274F81 /* NSDictionary+safeEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+safeEX.m"; sourceTree = "<group>"; };
+		EC3CD38F23320BDC00274F81 /* NSArray+safeEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+safeEX.h"; sourceTree = "<group>"; };
 		ECD7E253231A219C004AEDC9 /* FTPopOverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPopOverMenu.m; sourceTree = "<group>"; };
 		ECD7E254231A219C004AEDC9 /* FTPopOverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPopOverMenu.h; sourceTree = "<group>"; };
 		ECD7E255231A219C004AEDC9 /* HDPopMenuHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDPopMenuHelper.m; sourceTree = "<group>"; };
@@ -656,10 +656,10 @@
 		EC065750219A7AC500636786 /* NSArray_Dictionary_Exception */ = {
 			isa = PBXGroup;
 			children = (
-				EC065751219A7AC500636786 /* NSDictionary+safeEX.h */,
-				EC065752219A7AC500636786 /* NSArray+safeEX.h */,
-				EC065753219A7AC500636786 /* NSDictionary+safeEX.m */,
-				EC065754219A7AC500636786 /* NSArray+safeEX.m */,
+				EC3CD38F23320BDC00274F81 /* NSArray+safeEX.h */,
+				EC3CD38D23320BDC00274F81 /* NSArray+safeEX.m */,
+				EC3CD38C23320BDC00274F81 /* NSDictionary+safeEX.h */,
+				EC3CD38E23320BDC00274F81 /* NSDictionary+safeEX.m */,
 			);
 			path = NSArray_Dictionary_Exception;
 			sourceTree = "<group>";
@@ -1105,7 +1105,6 @@
 				ECEA332F2313D854006F4E73 /* Configuration.m in Sources */,
 				ECEA332E2313D854006F4E73 /* UIStoryboard+Category.m in Sources */,
 				ECEA33192313D854006F4E73 /* DLButton.m in Sources */,
-				EC0657FB219A7AC600636786 /* NSArray+safeEX.m in Sources */,
 				ECEA331A2313D854006F4E73 /* UILabel+attributeTextAction.m in Sources */,
 				EC065836219A7AC600636786 /* STAlertView.m in Sources */,
 				EC06566C219A6FFF00636786 /* AppDelegate.m in Sources */,
@@ -1121,13 +1120,13 @@
 				ECEA33132313D854006F4E73 /* UIWindow+DLExtension.m in Sources */,
 				EC065714219A779500636786 /* SSKeychain.m in Sources */,
 				EC0658B5219AB11000636786 /* NSSet+SetHook.m in Sources */,
+				EC3CD39123320BDC00274F81 /* NSDictionary+safeEX.m in Sources */,
 				EC06570E219A779500636786 /* Http.m in Sources */,
 				EC065728219A779500636786 /* BaseTableViewCell.m in Sources */,
 				EC0658B9219AB11000636786 /* NSMutableSet+MutableSetHook.m in Sources */,
 				EC0658AE219AB11000636786 /* NSObject+KVOCrash.m in Sources */,
 				EC0658B1219AB11000636786 /* NSMutableDictionary+MutableDictionaryHook.m in Sources */,
 				ECEA330D2313D854006F4E73 /* UIView+DLExtension.m in Sources */,
-				EC0657FA219A7AC600636786 /* NSDictionary+safeEX.m in Sources */,
 				ECEA33172313D854006F4E73 /* UIView+syCategory.m in Sources */,
 				ECEA32412313D61A006F4E73 /* MyNavigationBar.m in Sources */,
 				EC0657FC219A7AC600636786 /* XTimer.m in Sources */,
@@ -1147,6 +1146,7 @@
 				ECEA33282313D854006F4E73 /* UIFont+WDCustomLoader.m in Sources */,
 				EC306BAE2330EB7D00E088DB /* JJCPayCodeTextField.m in Sources */,
 				ECEA331B2313D854006F4E73 /* UINavigationBar+Awesome.m in Sources */,
+				EC3CD39023320BDC00274F81 /* NSArray+safeEX.m in Sources */,
 				EC065837219A7AC600636786 /* JFTagListView.m in Sources */,
 				EC065724219A779500636786 /* ProgressHUD.m in Sources */,
 				ECEA33182313D854006F4E73 /* UIButton+BtSelected.m in Sources */,
