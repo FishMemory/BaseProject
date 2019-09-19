@@ -29,13 +29,28 @@
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
-    TabBarControllerViewController * tabBarVc =  [TabBarControllerViewController sharedInstance];
-    [DeleLine deleteNavigateLine:tabBarVc.navigationController];
-    self.window.rootViewController  = tabBarVc;
+    [DefaultCenter addObserver:self selector:@selector(MianVC) name:@"mian" object:nil];
+    [DefaultCenter addObserver:self selector:@selector(loginVC) name:@"login" object:nil];
+    
+    if (APP.curUserId) {
+        [self MianVC];
+    }else{
+        [self loginVC];
+    }
 
     return YES;
 }
-
+-(void)MianVC{
+    TabBarControllerViewController * tabBarVc =  [[TabBarControllerViewController alloc]init];
+    [DeleLine deleteNavigateLine:tabBarVc.navigationController];
+    self.window.rootViewController  = tabBarVc;
+    tabBarVc.selectedIndex = 0;
+}
+-(void)loginVC{
+//    LoginVC *vc = [LoginVC new];
+//    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+//    self.window.rootViewController  = nav;
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     
