@@ -8,7 +8,7 @@
 
 #import "WYWebController.h"
 #import "WYWebProgressLayer.h"
-#import "UIView+Frame.h"
+ 
 
 @interface WYWebController ()<UIWebViewDelegate>
 
