@@ -362,8 +362,8 @@
            }
         }
     }else if (_datePicker) {
-      
-        _resultString=[NSString stringWithFormat:@"%@",_datePicker.date];
+      NSString *dateS = [NSString stringWithFormat:@"%@",_datePicker.date];
+      _resultString =  [dateS dateCustomTotimeIntervalForMatterType:@"yyyy-MM-dd HH:mm:ss +0000"];
     }
     if ([self.delegate respondsToSelector:@selector(toobarDonBtnHaveClick:resultString:)]) {
         [self.delegate toobarDonBtnHaveClick:self resultString:_resultString];
