@@ -49,25 +49,25 @@ static NSString *kGroupName = @"GroupName";
     UIImage * navBackImage = [UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(SCREEN_WIDTH, kTopSafeHeight)];
     ImageArrays = @[@"message_u",@"work_u",@"mine_u"];
     selectedImageArray =  @[@"message_s",@"work_s",@"mine_s"];
-    
+    UIColor *selectColor = COL_THEME;
+    UIColor *normalColor = rgba(34, 34, 34, 1);
     //首页导航
     UIViewController * first = [[UIViewController alloc]init];
-    [self addOneChlildVc:first title:MESSAGE imageName:ImageArrays[0] selectedImageName:selectedImageArray[0] itemColor:UIColorFromRGBA(0x9CAEC9, 1) itemSelectedColor:UIColorFromRGBA(0x2575F9, 1)];
+    [self addOneChlildVc:first title:MESSAGE imageName:ImageArrays[0] selectedImageName:selectedImageArray[0] itemColor:normalColor itemSelectedColor:selectColor];
     messageNa = [self createNavWith:first image:navBackImage];
     
     UIViewController * work = [[UIViewController alloc]init];
-    [self addOneChlildVc:work title:WORK imageName:ImageArrays[1] selectedImageName:selectedImageArray[1] itemColor:UIColorFromRGBA(0x9CAEC9, 1) itemSelectedColor:UIColorFromRGBA(0x2575F9, 1)];
+    [self addOneChlildVc:work title:WORK imageName:ImageArrays[1] selectedImageName:selectedImageArray[1] itemColor:normalColor itemSelectedColor:selectColor];
     workNa = [self createNavWith:work image:navBackImage];
     
     UIViewController *mine = [[UIViewController alloc]init];
-    [self addOneChlildVc:mine title:ME imageName:ImageArrays[2] selectedImageName:selectedImageArray[2] itemColor:UIColorFromRGBA(0x9CAEC9, 1) itemSelectedColor:UIColorFromRGBA(0x2575F9, 1)];
+    [self addOneChlildVc:mine title:ME imageName:ImageArrays[2] selectedImageName:selectedImageArray[2] itemColor:normalColor itemSelectedColor:selectColor];
     mineNa = [self createNavWith:mine image:navBackImage];
     self.tabBar.translucent = NO;
     
     self.viewControllers = @[messageNa,workNa,mineNa];
     [self.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(SCREEN_WIDTH, 50)]];
 }
-
 -(BaseUINavigationController*)createNavWith:(UIViewController*)vc image:(UIImage*)image{
     BaseUINavigationController *nav = [[BaseUINavigationController alloc]initWithRootViewController:vc];
     [nav.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
@@ -93,7 +93,7 @@ static NSString *kGroupName = @"GroupName";
     
     // 设置tabBarItem的普通文字颜色
     NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-    textAttrs[NSForegroundColorAttributeName] = itemcolor;
+    textAttrs[NSForegroundColorAttributeName] = itemselectedcolor;
     textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:10];
     [childVc.tabBarItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
     
@@ -101,7 +101,15 @@ static NSString *kGroupName = @"GroupName";
     NSMutableDictionary *selectedTextAttrs = [NSMutableDictionary dictionary];
     selectedTextAttrs[NSForegroundColorAttributeName] = itemselectedcolor;
     selectedTextAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:10];
+    
     [childVc.tabBarItem setTitleTextAttributes:selectedTextAttrs forState:UIControlStateSelected];
+    
+    
+    if (@available(iOS 10.0, *)) {
+        [[UITabBar appearance] setUnselectedItemTintColor:itemcolor];
+    } else {
+        // Fallback on earlier versions
+    }
     
     // 设置选中的图标
     UIImage *selectedImage = [[UIImage imageNamed:selectedImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
