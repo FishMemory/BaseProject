@@ -44,7 +44,7 @@
 #import "UIStoryboard+Category.h"
 #import  <ZZFlex.h>
 #import  <ZZFLEXMacros.h>
-
+#import <Masonry/Masonry.h>
 #endif /* VendorHeader_h */
 
 
