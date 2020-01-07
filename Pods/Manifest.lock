@@ -23,6 +23,7 @@ PODS:
   - SDWebImage (3.8.3):
     - SDWebImage/Core (= 3.8.3)
   - SDWebImage/Core (3.8.3)
+  - TZImagePickerController (3.2.7)
   - ZZFLEX (0.3.1)
 
 DEPENDENCIES:
@@ -34,10 +35,11 @@ DEPENDENCIES:
   - MJRefresh
   - Reachability (~> 3.2)
   - SDWebImage (~> 3.8.2)
+  - TZImagePickerController
   - ZZFLEX (from `https://github.com/tbl00c/ZZFLEX.git`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - IQKeyboardManager
     - Masonry
@@ -46,6 +48,8 @@ SPEC REPOS:
     - MJRefresh
     - Reachability
     - SDWebImage
+  trunk:
+    - TZImagePickerController
 
 EXTERNAL SOURCES:
   ZZFLEX:
@@ -65,8 +69,9 @@ SPEC CHECKSUMS:
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: a72e880a8fe0f7fc31efe15aaed443c074d2a80c
+  TZImagePickerController: 821b81f83594a736e831a018f2a2ce31822ddf0b
   ZZFLEX: 3a31a3224fa2dffa781f70d071e8a2d8289393ca
 
-PODFILE CHECKSUM: 827a8287c742ff90bcfdd345f8d10f708822d062
+PODFILE CHECKSUM: 431c5d33e21e7cb232c66ff2615bf6175023bea4
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.8.4

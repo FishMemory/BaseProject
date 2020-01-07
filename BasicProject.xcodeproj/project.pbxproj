@@ -72,6 +72,10 @@
 		EC306BAF2330EB7D00E088DB /* JJCPayCodeTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC306BAC2330EB7D00E088DB /* JJCPayCodeTextFieldCell.m */; };
 		EC3CD39023320BDC00274F81 /* NSArray+safeEX.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3CD38D23320BDC00274F81 /* NSArray+safeEX.m */; };
 		EC3CD39123320BDC00274F81 /* NSDictionary+safeEX.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3CD38E23320BDC00274F81 /* NSDictionary+safeEX.m */; };
+		EC8C2CB523C475C800097651 /* UIAlertTool.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8C2CB123C475C800097651 /* UIAlertTool.m */; };
+		EC8C2CB623C475C800097651 /* TZImagePickerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8C2CB223C475C800097651 /* TZImagePickerHelper.m */; };
+		EC8C2CB723C475C800097651 /* UIView+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8C2CB323C475C800097651 /* UIView+Alert.m */; };
+		EC8C2CB823C475C800097651 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8C2CB423C475C800097651 /* UIView+Toast.m */; };
 		ECD7E257231A219C004AEDC9 /* FTPopOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD7E253231A219C004AEDC9 /* FTPopOverMenu.m */; };
 		ECD7E258231A219C004AEDC9 /* HDPopMenuHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD7E255231A219C004AEDC9 /* HDPopMenuHelper.m */; };
 		ECEA32402313D61A006F4E73 /* MyNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECEA323B2313D61A006F4E73 /* MyNavigationBar.xib */; };
@@ -243,6 +247,14 @@
 		EC3CD38D23320BDC00274F81 /* NSArray+safeEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+safeEX.m"; sourceTree = "<group>"; };
 		EC3CD38E23320BDC00274F81 /* NSDictionary+safeEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+safeEX.m"; sourceTree = "<group>"; };
 		EC3CD38F23320BDC00274F81 /* NSArray+safeEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+safeEX.h"; sourceTree = "<group>"; };
+		EC8C2CAD23C475C800097651 /* TZImagePickerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZImagePickerHelper.h; sourceTree = "<group>"; };
+		EC8C2CAE23C475C800097651 /* UIAlertTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIAlertTool.h; sourceTree = "<group>"; };
+		EC8C2CAF23C475C800097651 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		EC8C2CB023C475C800097651 /* UIView+Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Alert.h"; sourceTree = "<group>"; };
+		EC8C2CB123C475C800097651 /* UIAlertTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIAlertTool.m; sourceTree = "<group>"; };
+		EC8C2CB223C475C800097651 /* TZImagePickerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZImagePickerHelper.m; sourceTree = "<group>"; };
+		EC8C2CB323C475C800097651 /* UIView+Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Alert.m"; sourceTree = "<group>"; };
+		EC8C2CB423C475C800097651 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		ECD7E253231A219C004AEDC9 /* FTPopOverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPopOverMenu.m; sourceTree = "<group>"; };
 		ECD7E254231A219C004AEDC9 /* FTPopOverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPopOverMenu.h; sourceTree = "<group>"; };
 		ECD7E255231A219C004AEDC9 /* HDPopMenuHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDPopMenuHelper.m; sourceTree = "<group>"; };
@@ -570,6 +582,7 @@
 		EC06572E219A780200636786 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				EC8C2CAC23C475C800097651 /* TZImagePickerHelper */,
 				EC06575F219A7AC500636786 /* FTPopOverMenu */,
 				ECEA32BB2313D854006F4E73 /* GlobalUtil */,
 				EC0657D3219A7AC600636786 /* JFTagListClass */,
@@ -781,6 +794,21 @@
 				EC306BAC2330EB7D00E088DB /* JJCPayCodeTextFieldCell.m */,
 			);
 			path = JJCPayCodeTextField;
+			sourceTree = "<group>";
+		};
+		EC8C2CAC23C475C800097651 /* TZImagePickerHelper */ = {
+			isa = PBXGroup;
+			children = (
+				EC8C2CAD23C475C800097651 /* TZImagePickerHelper.h */,
+				EC8C2CAE23C475C800097651 /* UIAlertTool.h */,
+				EC8C2CAF23C475C800097651 /* UIView+Toast.h */,
+				EC8C2CB023C475C800097651 /* UIView+Alert.h */,
+				EC8C2CB123C475C800097651 /* UIAlertTool.m */,
+				EC8C2CB223C475C800097651 /* TZImagePickerHelper.m */,
+				EC8C2CB323C475C800097651 /* UIView+Alert.m */,
+				EC8C2CB423C475C800097651 /* UIView+Toast.m */,
+			);
+			path = TZImagePickerHelper;
 			sourceTree = "<group>";
 		};
 		ECEA32BB2313D854006F4E73 /* GlobalUtil */ = {
@@ -1030,6 +1058,7 @@
 				EC065714219A779500636786 /* SSKeychain.m in Sources */,
 				EC0658B5219AB11000636786 /* NSSet+SetHook.m in Sources */,
 				EC3CD39123320BDC00274F81 /* NSDictionary+safeEX.m in Sources */,
+				EC8C2CB723C475C800097651 /* UIView+Alert.m in Sources */,
 				EC065728219A779500636786 /* BaseTableViewCell.m in Sources */,
 				EC0658B9219AB11000636786 /* NSMutableSet+MutableSetHook.m in Sources */,
 				EC0658AE219AB11000636786 /* NSObject+KVOCrash.m in Sources */,
@@ -1047,6 +1076,7 @@
 				EC06582C219A7AC600636786 /* MyPageControl.m in Sources */,
 				EC0658AB219AB11000636786 /* NSDictionary+DictionaryHook.m in Sources */,
 				EC0658BC219AB11000636786 /* JJException.m in Sources */,
+				EC8C2CB523C475C800097651 /* UIAlertTool.m in Sources */,
 				ECEA33282313D854006F4E73 /* UIFont+WDCustomLoader.m in Sources */,
 				EC306BAE2330EB7D00E088DB /* JJCPayCodeTextField.m in Sources */,
 				EC3CD39023320BDC00274F81 /* NSArray+safeEX.m in Sources */,
@@ -1077,11 +1107,13 @@
 				EC065715219A779500636786 /* CheckNumber.m in Sources */,
 				ECD7E257231A219C004AEDC9 /* FTPopOverMenu.m in Sources */,
 				EC0658AC219AB11000636786 /* NSMutableArray+MutableArrayHook.m in Sources */,
+				EC8C2CB623C475C800097651 /* TZImagePickerHelper.m in Sources */,
 				EC06571D219A779500636786 /* EncryptClass.m in Sources */,
 				ECEA330F2313D854006F4E73 /* NSString+SizeLayout.m in Sources */,
 				ECEA331D2313D854006F4E73 /* UIColor+Extend.m in Sources */,
 				EC065722219A779500636786 /* titleView.m in Sources */,
 				ECEA33292313D854006F4E73 /* DLPageControl.m in Sources */,
+				EC8C2CB823C475C800097651 /* UIView+Toast.m in Sources */,
 				ECEA33222313D854006F4E73 /* NSString+syCategory.m in Sources */,
 				EC306BAF2330EB7D00E088DB /* JJCPayCodeTextFieldCell.m in Sources */,
 				EC06570B219A779500636786 /* HttpServices.m in Sources */,
